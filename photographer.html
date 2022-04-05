@@ -1,36 +1,153 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title>Fisheye</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fisheye, plateforme de photographes" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/104383f80a.js" crossorigin="anonymous"></script>
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+  <header>
+    <img src="assets/images/logo.png" class="logo" />
+  </header>
+  <main id="main">
+
+    <section class="photograph-header">
+      <article class="photograph-profil">
+        <h1>Mimi Keel</h1>
+        <span>London, UK</span>
+        <p>Voir le beau dans le quotidien</p>
+      </article>
+      <div class="div-contact_button">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <figure id="photograph-portrait">
+        <img src="/assets/Mimi/Portrait_Nora.jpg" alt="" id="mimi">
+      </figure>
+    </section>
+
+    <section class="filter-profil">
+      <div class="filter_selection">
+        <label id="filter-id" for="filter-id">Trier par</label>
+        <select name="filters" id="filters-select">
+          <option value="popularite">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+      </div>
+
+    </section>
+    <section class="lightbox">
+      <div class="lightbox-img">
+        <a href="#" class="lien-lightbox" id="lightbox1">
+          <img src="/assets/Mimi/Event_BenevidesWedding.jpg" alt="">
+        </a>
+        <div class="lightbox-description">
+          <p>Arc-en-ciel</p>
+          <div class="lightbox-likes" aria-label="likes">
+            <p class="number-likes">11</p>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox-img">
+        <a href="#" class="lien-lightbox" id="lightbox2">
+          <img src="/assets/Mimi/Event_BenevidesWedding.jpg" alt="">
+        </a>
+        <div class="lightbox-description">
+          <p>Arc-en-ciel</p>
+          <div class="lightbox-likes" aria-label="likes">
+            <p class="number-likes">11</p>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox-img">
+        <a href="#" class="lien-lightbox" id="lightbox3">
+          <img src="/assets/Mimi/Event_BenevidesWedding.jpg" alt="">
+        </a>
+        <div class="lightbox-description">
+          <p>Arc-en-ciel</p>
+          <div class="lightbox-likes" aria-label="likes">
+            <p class="number-likes">11</p>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox-img">
+        <a href="#" class="lien-lightbox" id="lightbox4">
+          <img src="/assets/Mimi/Event_BenevidesWedding.jpg" alt="">
+        </a>
+        <div class="lightbox-description">
+          <p>Arc-en-ciel</p>
+          <div class="lightbox-likes" aria-label="likes">
+            <p class="number-likes">11</p>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox-img">
+        <a href="#" class="lien-lightbox" id="lightbox5">
+          <img src="/assets/Mimi/Event_BenevidesWedding.jpg" alt="">
+        </a>
+        <div class="lightbox-description">
+          <p>Arc-en-ciel</p>
+          <div class="lightbox-likes" aria-label="likes">
+            <p class="number-likes">11</p>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightbox-img">
+        <a href="#" class="lien-lightbox" id="lightbox6">
+          <img src="/assets/Mimi/Event_BenevidesWedding.jpg" alt="">
+        </a>
+        <div class="lightbox-description">
+          <p>Arc-en-ciel</p>
+          <div class="lightbox-likes" aria-label="likes">
+            <p class="number-likes">11</p>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form>
+        <div>
+          <label>Prénom</label>
+          <input />
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <script type="module" src="/scripts/pages/photographerFiche.js"></script>
+</body>
+
 </html>

@@ -16,15 +16,17 @@
 //   return { name, picture, getUserCardDOM };
 // }
 
-function photographerFactory(data) {
+export function photographerFactory(data) {
   const { name, portrait, city, country, tagline, price } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
-    const divPresentation = document.createElement("div"); // Création élément parent img/h2
+    const divPresentation = document.createElement("a"); // Création élément parent img/h2
     const divDescription = document.createElement("div"); // Création élément parent city + country + tag + price
+    divPresentation.setAttribute("href", "#");
+    // divPresentation.setAttribute("aria-label", ""); //! Compléter aria-label
     // Presentation
     const img = document.createElement("img");
     img.setAttribute("src", picture);
@@ -39,13 +41,18 @@ function photographerFactory(data) {
     p2.textContent = tagline;
     p2.setAttribute("class", "tag"); // Attribution de classe
     const p3 = document.createElement("p");
-    p3.textContent = price + " €/mois";
+    p3.textContent = price + " €/jour";
     p3.setAttribute("class", "price"); // Attribution de classe
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(p1);
-    article.appendChild(p2);
-    article.appendChild(p3);
+    article.appendChild(divPresentation);
+    divPresentation.appendChild(img);
+    divPresentation.appendChild(h2);
+    article.appendChild(divDescription);
+    divDescription.appendChild(p1);
+    divDescription.appendChild(p2);
+    divDescription.appendChild(p3);
+    divPresentation.setAttribute("class", "presentation"); // Attribution de classe
+    divDescription.setAttribute("class", "description"); // Attribution de classe
+
     return article;
   }
   return { name, picture, city, getUserCardDOM };

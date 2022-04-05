@@ -1,35 +1,11 @@
-async function getPhotographers() {
-  // Penser à remplacer par les données récupérées dans le json
-  // const photographers = [
-  //   {
-  //     name: "Ma data test",
-  //     id: 1,
-  //     city: "Paris",
-  //     country: "France",
-  //     tagline: "Ceci est ma data test",
-  //     price: 400,
-  //     portrait: "account.png",
-  //   },
-  //   {
-  //     name: "Autre data test",
-  //     id: 2,
-  //     city: "Londres",
-  //     country: "UK",
-  //     tagline: "Ceci est ma data test 2",
-  //     price: 500,
-  //     portrait: "account.png",
-  //   },
-  // ];
-  // // et bien retourner le tableau photographers seulement une fois
-  // return {
-  //   photographers: [...photographers, ...photographers, ...photographers],
-  // };
+import { photographerFactory } from "../factories/photographer.js";
 
+async function getPhotographers() {
   ///////////// NOUVEAU
   // Informations photographes récupérées dans le json
   const data = await fetch("./data/photographers.json"); //await attend que la promesse est été résolue
   const result = await data.json(); // .json: transforme les données JSON en objets
-  console.log(result);
+  // console.log(result);
 
   return {
     photographers: result.photographers,

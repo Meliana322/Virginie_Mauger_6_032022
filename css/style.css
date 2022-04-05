@@ -3,6 +3,7 @@
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
+  box-sizing: border-box;
 }
 
 header {
@@ -11,6 +12,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  width: 100%;
 }
 
 h1 {
@@ -20,7 +22,7 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
+  margin-left: 5%;
 }
 
 .photographer_section {
@@ -61,4 +63,23 @@ h1 {
 }
 .photographer_section article .price {
   font-size: 16px;
+}
+.photographer_section .presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photographer_section a {
+  text-decoration: none;
+}
+
+.photographer_section .description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photographer_section .description p {
+  margin: 0;
 }
