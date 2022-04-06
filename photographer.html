@@ -17,12 +17,16 @@
 
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <link href="css/tablette.css" rel="stylesheet" type="text/css" />
+  <link href="css/mobile.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a class="logo" href="index.html">
+      <img src="assets/images/logo.png" id="logo" alt="Fisheye Home page" />
+    </a>
   </header>
   <main id="main">
 
@@ -36,7 +40,7 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <figure id="photograph-portrait">
-        <img src="/assets/Mimi/Portrait_Nora.jpg" alt="" id="mimi">
+        <img src="/assets/Mimi/Portrait_Nora.jpg" alt="" class="photograph-photo">
       </figure>
     </section>
 
@@ -49,7 +53,17 @@
           <option value="titre">Titre</option>
         </select>
       </div>
-
+      <section class="profil-likes-price">
+        <div class="profil-like-photograph">
+          <div class="profil-likes">
+            <span id="profil-likes_heart">297 081</span>
+            <i class="fas fa-heart icone-like"></i>
+          </div>
+          <div class="profil-price">
+            <span id="profil-price-day">250€ / jour</span>
+          </div>
+        </div>
+      </section>
     </section>
     <section class="lightbox">
       <div class="lightbox-img">
@@ -129,8 +143,8 @@
           </div>
         </div>
       </div>
-
     </section>
+
   </main>
   <div id="contact_modal">
     <div class="modal">

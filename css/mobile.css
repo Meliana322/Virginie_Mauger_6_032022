@@ -1,0 +1,28 @@
+@media screen and (max-width: 768px) {
+  /* !Pages Photographes */
+  /* header */
+  .logo #logo {
+    height: 70%;
+  }
+  /* Section photograph-header */
+  article.photograph-profil {
+    font-size: 1.4em;
+  }
+  .contact_button {
+    font-size: 16px !important;
+    height: 40px;
+  }
+  /* Section filter-profil */
+  .filter-profil {
+    flex-direction: column;
+    font-size: 18px;
+  }
+  .profil-likes-price {
+    justify-content: center;
+  }
+  .profil-like-photograph {
+    width: 60%;
+    font-size: 16px;
+    position: unset;
+  }
+}

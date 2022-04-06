@@ -8,6 +8,7 @@
   /* !Ajout */
   display: flex;
   margin: 0 5%;
+  border-radius: 5px;
 }
 
 .contact_button {
@@ -82,24 +83,35 @@ form input {
 main {
   width: 100%;
 }
+
+.logo {
+  margin-left: 5%;
+}
+.logo #logo {
+  height: 100%;
+}
 article.photograph-profil {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 100px;
+  margin-left: 5%;
+  font-size: 1.8em;
 }
 .photograph-profil {
-  width: 33%;
+  width: 40%;
 }
 .photograph-profil h1 {
-  font-size: 64px;
   height: 8%;
+  color: #d3573c;
+  font-weight: 400;
 }
 .photograph-profil span {
   font-size: 24px;
+  color: #901c1c;
 }
 .photograph-profil p {
   font-size: 18px;
+  color: #525252;
 }
 .div-contact_button {
   height: 100%;
@@ -107,12 +119,12 @@ article.photograph-profil {
   align-items: center;
 }
 #photograph-portrait {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-#mimi {
+.photograph-photo {
   width: 180px;
   height: 180px;
   object-fit: cover;
@@ -134,17 +146,20 @@ article.photograph-profil {
   display: flex;
   align-items: center;
   padding-right: 30px;
+  font-size: 20px;
 }
 .filter_selection #filter-id {
-  width: 10%;
+  width: 20%;
   font-weight: 600;
 }
 .filter_selection #filters-select {
-  width: 15%;
+  width: 27%;
   height: 40px;
-  font-weight: 600;
+  font-weight: 500;
   background-color: #901c1c;
   color: #fff;
+  padding-left: 2%;
+  border-radius: 5px;
 }
 /* Section lightbox */
 .lightbox {
@@ -165,7 +180,7 @@ article.photograph-profil {
 .lightbox-img .lien-lightbox img {
   height: 300px;
   width: 100%;
-  border-radius: 2%;
+  border-radius: 5px;
   object-fit: cover;
 }
 .lightbox-description {
@@ -186,6 +201,26 @@ article.photograph-profil {
   justify-content: flex-end;
 }
 .lightbox-likes .icone-like {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.profil-like-photograph {
+  width: 22%;
+  display: flex;
+  justify-content: center;
+  margin-right: 3%;
+  background-color: #db8876;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+}
+.profil-likes {
+  width: 45%;
+}
+.profil-likes-price {
   width: 100%;
   display: flex;
   justify-content: flex-end;

@@ -26,7 +26,7 @@ export function photographerFactory(data) {
     const divPresentation = document.createElement("a"); // Création élément parent img/h2
     const divDescription = document.createElement("div"); // Création élément parent city + country + tag + price
     divPresentation.setAttribute("href", "#");
-    // divPresentation.setAttribute("aria-label", ""); //! Compléter aria-label
+
     // Presentation
     const img = document.createElement("img");
     img.setAttribute("src", picture);
