@@ -2,7 +2,7 @@
   display: none;
 }
 
-.photograph-header {
+#photographHeader {
   background-color: #fafafa;
   height: 300px;
   /* !Ajout */
@@ -11,7 +11,7 @@
   border-radius: 5px;
 }
 
-.contact_button {
+.contactButton {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -79,7 +79,10 @@ form input {
 }
 
 /* !Perso CSS pages photographes */
-/* Section photograph-header */
+/* Section photographHeader */
+body {
+  margin-bottom: 30px;
+}
 main {
   width: 100%;
 }
@@ -97,34 +100,34 @@ article.photograph-profil {
   margin-left: 5%;
   font-size: 1.8em;
 }
-.photograph-profil {
+.photographProfil {
   width: 40%;
 }
-.photograph-profil h1 {
+.photographProfil h1 {
   height: 8%;
   color: #d3573c;
   font-weight: 400;
 }
-.photograph-profil span {
+.photographProfil span {
   font-size: 24px;
   color: #901c1c;
 }
-.photograph-profil p {
+.photographProfil p {
   font-size: 18px;
   color: #525252;
 }
-.div-contact_button {
+.divContactButton {
   height: 100%;
   display: flex;
   align-items: center;
 }
-#photograph-portrait {
+#photographPortrait {
   width: 40%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.photograph-photo {
+.photographPhotoProfil {
   width: 180px;
   height: 180px;
   object-fit: cover;

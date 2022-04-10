@@ -1,7 +1,6 @@
 import { photographerFactory } from "../factories/photographer.js";
 
 async function getPhotographers() {
-  ///////////// NOUVEAU
   // Informations photographes récupérées dans le json
   const data = await fetch("./data/photographers.json"); //await attend que la promesse est été résolue
   const result = await data.json(); // .json: transforme les données JSON en objets

@@ -1,34 +1,54 @@
 // !Code JavaScript lié à la page photographer.html
+const sectionPhotographHeader = document.getElementById("photographHeader");
+const photographDiv = document.getElementById("photographDiv");
 
-// const portraitPhotograph = document.getElementsByClassName("photograph-header");
-// const photographProfil = document.getElementsByClassName("photograph-profil");
-// const photographPortrait = document.getElementById("photograph-portrait");
+const myPhotographer = {
+  name: "Tracy Galindo",
+  id: 82,
+  city: "Montreal",
+  country: "Canada",
+  tagline: "Voir le beau dans le quotidien",
+  price: 500,
+  portrait: "TracyGalindo.jpg",
+};
+// Création des éléments du DOM avec classes, id, attributs
 
-// const myPhotographer = {
-//   name: "Tracy Galindo",
-//   id: 82,
-//   city: "Montreal",
-//   country: "Canada",
-//   tagline: "Photographe freelance",
-//   price: 500,
-//   portrait: "TracyGalindo.jpg",
-// };
+let article = document.createElement("article");
+sectionPhotographHeader.appendChild(article);
+article.classList.add("photographProfil");
 
-// function displayPhotoGrapherHeader({ name, city }) {
-//   document.querySelector(
-//     ".photograph-header"
-//   ).innerHTML = `<h1>${name} ${city}</h1>`;
-// document.querySelector(
-//     ".photograph-header"
-//   ).innerHTML = "<h1>" + name + " " + city + "</h1>";
-// }
+let h1 = document.createElement("h1");
+article.appendChild(h1);
+h1.innerHTML = myPhotographer.name;
+h1.classList.add("photographName");
 
-// displayPhotoGrapherHeader(myPhotographer);
+let span = document.createElement("span");
+article.appendChild(span);
+span.innerHTML = myPhotographer.city + ", " + myPhotographer.country;
+span.classList.add("photographLocation");
 
-// function addButton(name) {
-//   document.querySelector(
-//     ".photograph-header"
-//   ).innerHTML = `<button>Click ${name}</button>`;
-// }
+let p = document.createElement("p");
+article.appendChild(p);
+p.innerHTML = myPhotographer.tagline;
+p.classList.add("photographTagline");
 
-// addButton("Pierre");
+let div = document.createElement("div");
+sectionPhotographHeader.appendChild(div);
+div.classList.add("divContactButton");
+
+let button = document.createElement("button");
+div.appendChild(button);
+button.classList.add("contactButton");
+button.innerHTML = "Contactez-moi";
+button.setAttribute("onclick", "displayModal()");
+
+let figure = document.createElement("figure");
+sectionPhotographHeader.appendChild(figure);
+figure.setAttribute("id", "photographPortrait");
+figure.classList.add("photographPortrait");
+
+let img = document.createElement("img");
+figure.appendChild(img);
+img.setAttribute("class", "photographPhotoProfil");
+img.setAttribute("src", "assets/Mimi/Portrait_Nora.jpg");
+img.setAttribute("alt", "#");

@@ -1,4 +1,8 @@
 @media screen and (max-width: 768px) {
+  /* !Pages Accueil */
+  .photographer_section {
+    grid-template-columns: 1fr;
+  }
   /* !Pages Photographes */
   /* header */
   .logo #logo {
