@@ -4,8 +4,6 @@ async function getPhotographers() {
   // Informations photographes récupérées dans le json
   const data = await fetch("./data/photographers.json"); //await attend que la promesse est été résolue
   const result = await data.json(); // .json: transforme les données JSON en objets
-  // console.log(result);
-
   return {
     photographers: result.photographers,
   };
@@ -23,8 +21,8 @@ async function displayData(photographers) {
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers(); //await renvoi données JSON
-  //console.log(photographers);
+  const { photographers } = await getPhotographers(); //await renvoi données JSON des photographes
+  console.log(photographers);
   displayData(photographers);
 }
 

@@ -1,4 +1,4 @@
-#contact_modal {
+#contactModal {
   display: none;
 }
 
@@ -175,35 +175,35 @@ article.photograph-profil {
   height: 800px;
   margin: 0 5%;
 }
-.lightbox-img {
+.lightboxImg {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.lightbox-img .lien-lightbox img {
+.lightboxImg .lienLightbox img {
   height: 300px;
   width: 100%;
   border-radius: 5px;
   object-fit: cover;
 }
-.lightbox-description {
+.lightboxDescription {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #901c1c;
   font-size: 24px;
 }
-.lightbox-likes {
+.lightboxLikes {
   width: 20%;
   display: flex;
   align-items: center;
 }
-.lightbox-likes .number-likes {
+.lightboxLikes .numberLikes {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-.lightbox-likes .icone-like {
+.lightboxLikes .iconeLike {
   width: 100%;
   display: flex;
   justify-content: flex-end;

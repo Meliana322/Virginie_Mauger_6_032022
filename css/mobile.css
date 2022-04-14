@@ -9,10 +9,10 @@
     height: 70%;
   }
   /* Section photograph-header */
-  article.photograph-profil {
+  .photographProfil {
     font-size: 1.4em;
   }
-  .contact_button {
+  .contactButton {
     font-size: 16px !important;
     height: 40px;
   }

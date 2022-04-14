@@ -1,23 +1,5 @@
-// function photographerFactory(data) {
-//   const { name, portrait, city, country, tagline, price } = data;
-
-//   const picture = `assets/photographers/${portrait}`;
-
-//   function getUserCardDOM() {
-//     const article = document.createElement("article");
-//     const img = document.createElement("img");
-//     img.setAttribute("src", picture);
-//     const h2 = document.createElement("h2");
-//     h2.textContent = name;
-//     article.appendChild(img);
-//     article.appendChild(h2);
-//     return article;
-//   }
-//   return { name, picture, getUserCardDOM };
-// }
-
 export function photographerFactory(data) {
-  const { name, portrait, city, country, tagline, price } = data;
+  const { name, portrait, city, country, tagline, price, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
@@ -25,7 +7,8 @@ export function photographerFactory(data) {
     const article = document.createElement("article");
     const divPresentation = document.createElement("a"); // Création élément parent img/h2
     const divDescription = document.createElement("div"); // Création élément parent city + country + tag + price
-    divPresentation.setAttribute("href", "#");
+    divPresentation.setAttribute("href", `photographer.html?id=${id}`); // Lien vers page photographe via son id
+    console.log(divPresentation);
 
     // Presentation
     const img = document.createElement("img");
@@ -55,5 +38,5 @@ export function photographerFactory(data) {
 
     return article;
   }
-  return { name, picture, city, getUserCardDOM };
+  return { name, picture, city, id, getUserCardDOM };
 }
