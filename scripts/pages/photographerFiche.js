@@ -46,18 +46,18 @@ function displayPhotographer(name, portrait, city, country, tagLine) {
 }
 
 // Transformation et Récupération des données JSON en objet
-console.log(window.location);
+// console.log(window.location);
 const url = new URL(window.location);
 const searchParams = new URLSearchParams(url.search);
 
 const photographerId = Number(searchParams.get("id")); // Recupère via la barre d'adresse l'id du photographe
-
+// console.log(photographerId);
 const getPhotographInfo = () => {
   fetch("data/photographers.json")
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.media);
-      console.log(json.photographers);
+      // console.log(json.photographers);
+      // console.log(json.media);
       // je récupere les infos des photographes (TOUS)
       const myPhotographer = json.photographers.find(function (photographer) {
         return photographer.id === photographerId;
@@ -71,7 +71,31 @@ const getPhotographInfo = () => {
         myPhotographer.tagline
       );
 
-      // donnnes des media
+      // !donnnes des media
+      //Tableau de tous les médias
+      const mediaPhotographer = json.media;
+      // console.log(mediaPhotographer);
+
+      // Tableau des médias trié
+      let resultSortingMedia = [];
+      // console.log(resultSortingMedia);
+
+      // Tant que "i" est inférieur à la taille du tableau
+      for (let i = 0; i < mediaPhotographer.length; i++) {
+        if (
+          // J'ajoute photographerId dans le tableau resultSortingMedia et si l'Id est égal à celui de mon photographe
+          resultSortingMedia.push(
+            mediaPhotographer[i].photographerId === photographerId
+          )
+        ) {
+          console.log(resultSortingMedia);
+        } else {
+          console.log("error");
+        }
+      }
+      console.log(resultSortingMedia);
+
+      // !******************
 
       // affichage des medias
     });
