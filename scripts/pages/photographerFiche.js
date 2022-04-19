@@ -50,7 +50,7 @@ function displayPhotographer(name, portrait, city, country, tagLine) {
 const url = new URL(window.location);
 const searchParams = new URLSearchParams(url.search);
 
-const photographerId = Number(searchParams.get("id")); // Recupère via la barre d'adresse l'id du photographe
+const photographerId = Number(searchParams.get("id")); // Recupère via la barre d'adresse l'id du photographe en nombre et non en string
 // console.log(photographerId);
 const getPhotographInfo = () => {
   fetch("data/photographers.json")
@@ -74,69 +74,52 @@ const getPhotographInfo = () => {
       // !donnnes des media
       //Tableau de tous les médias
       const mediaPhotographer = json.media;
-      // console.log(mediaPhotographer);
 
       // Tableau des médias trié
       let resultSortingMedia = [];
-      // console.log(resultSortingMedia);
 
       // Tant que "i" est inférieur à la taille du tableau
       for (let i = 0; i < mediaPhotographer.length; i++) {
-        if (
-          // J'ajoute photographerId dans le tableau resultSortingMedia et si l'Id est égal à celui de mon photographe
-          resultSortingMedia.push(
-            mediaPhotographer[i].photographerId === photographerId
-          )
-        ) {
-          console.log(resultSortingMedia);
-        } else {
-          console.log("error");
+        // Si l'id de la barre d'adresse est identique a l'id du proprio du media
+        if (photographerId === mediaPhotographer[i].photographerId) {
+          // alors J'ajoute le media dans le tableau resultSortingMedia
+          resultSortingMedia.push(mediaPhotographer[i]);
         }
       }
-      console.log(resultSortingMedia);
-
-      // !******************
-
-      // affichage des medias
+      for (let i = 0; i < resultSortingMedia.length; i++) {
+        console.log(resultSortingMedia[i].title);
+        displayMedia(resultSortingMedia[i].title, resultSortingMedia[i].likes);
+      }
+      // console.log(resultSortingMedia);
     });
 };
 getPhotographInfo();
 
-// !Section lightbox
+// !Section gallery
 
-// const lightbox = document.querySelector(".lightbox");
-// console.log(lightbox);
+function displayMedia(titre, likes) {
+  const galleryDOM = document.querySelector(".gallery");
+  galleryDOM.innerHTML =
+    galleryDOM.innerHTML +
+    `<div class="cardImage">
+      <a class="lienImageGallery src="assets" href= "#">
+        <img class=imageGallerie alt="#">
+      </a>
+      <h1 class="titleImage">${titre}</h1>
+      <span class="likesImage">${likes}</span>
+      <i class=fas fa-heart iconeLike></i>
+    </div>`;
+}
 
-let divLightbox = document.createElement("div");
-document.querySelector(".lightbox").appendChild(divLightbox);
-divLightbox.classList.add("lightboxImg");
+// displayMedia("Cheval", 334);
+// displayMedia("Cheval22", 442);
 
-let lienLightbox = document.createElement("a");
-document.querySelector(".lightboxImg").appendChild(lienLightbox);
-lienLightbox.classList.add("lienLightbox");
-lienLightbox.setAttribute("href", "#");
+// const tableau = [17,39,75]
+// tableau[1]
 
-let imgLightbox = document.createElement("img");
-document.querySelector(".lienLightbox").appendChild(imgLightbox);
-imgLightbox.classList.add("imgLightbox");
-imgLightbox.setAttribute("src", "#");
+// const objet = {
+//   name: "daily",
+//   firstName: "pierre"
+// }
 
-let lightboxDescription = document.createElement("div");
-document.querySelector(".lightboxImg").appendChild(lightboxDescription);
-lightboxDescription.classList.add("lightboxDescription");
-
-let lightboxTitle = document.createElement("p");
-document.querySelector(".lightboxDescription").appendChild(lightboxTitle);
-lightboxTitle.classList.add("lightboxTitle");
-
-let lightboxLikes = document.createElement("div");
-document.querySelector(".lightboxDescription").appendChild(lightboxLikes);
-lightboxLikes.classList.add("lightboxLikes");
-
-let numberLikes = document.createElement("p");
-document.querySelector(".lightboxLikes").appendChild(numberLikes);
-numberLikes.classList.add("numberLikes");
-
-let iconeLikes = document.createElement("i");
-document.querySelector(".lightboxLikes").appendChild(iconeLikes);
-iconeLikes.classList.add("iconeLikes");
+// objet.name
