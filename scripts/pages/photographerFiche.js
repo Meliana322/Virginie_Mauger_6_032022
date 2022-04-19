@@ -44,7 +44,6 @@ function displayPhotographer(name, portrait, city, country, tagLine) {
   img.setAttribute("src", `assets/photographers/${portrait}`);
   img.setAttribute("alt", "#");
 }
-
 // Transformation et Récupération des données JSON en objet
 // console.log(window.location);
 const url = new URL(window.location);
@@ -77,7 +76,6 @@ const getPhotographInfo = () => {
 
       // Tableau des médias trié
       let resultSortingMedia = [];
-
       // Tant que "i" est inférieur à la taille du tableau
       for (let i = 0; i < mediaPhotographer.length; i++) {
         // Si l'id de la barre d'adresse est identique a l'id du proprio du media
@@ -87,39 +85,51 @@ const getPhotographInfo = () => {
         }
       }
       for (let i = 0; i < resultSortingMedia.length; i++) {
-        console.log(resultSortingMedia[i].title);
-        displayMedia(resultSortingMedia[i].title, resultSortingMedia[i].likes);
+        // console.log(resultSortingMedia[i].video);
+        displayMedia(
+          resultSortingMedia[i].title,
+          resultSortingMedia[i].likes,
+          resultSortingMedia[i].image
+        );
       }
-      // console.log(resultSortingMedia);
+      for (let i = 0; i < resultSortingMedia.length; i++) {
+        displayPrice(resultSortingMedia[i].price);
+      }
     });
 };
 getPhotographInfo();
 
 // !Section gallery
 
-function displayMedia(titre, likes) {
+function displayMedia(titre, likes, image) {
   const galleryDOM = document.querySelector(".gallery");
   galleryDOM.innerHTML =
     galleryDOM.innerHTML +
-    `<div class="cardImage">
-      <a class="lienImageGallery src="assets" href= "#">
-        <img class=imageGallerie alt="#">
+    `<article class=galleryCards>
+      <a href="#" class="linkLightbox">
+        <img class="linkLightboxImage" src="assets/${photographerId}/${image}"/>
       </a>
-      <h1 class="titleImage">${titre}</h1>
-      <span class="likesImage">${likes}</span>
-      <i class=fas fa-heart iconeLike></i>
-    </div>`;
+      <div class="galleryDescription">
+        <h2 class="cardsTitle">${titre}</h2>
+        <button class="cardsButton">
+          <span class="cardsLikes">${likes}</span>
+          <i class="fas fa-heart icone-like"></i>
+        </button>
+    </article>`;
 }
+// !Section profil-likes-price
 
-// displayMedia("Cheval", 334);
-// displayMedia("Cheval22", 442);
-
-// const tableau = [17,39,75]
-// tableau[1]
-
-// const objet = {
-//   name: "daily",
-//   firstName: "pierre"
-// }
-
-// objet.name
+function displayPrice(price) {
+  const galleryDOM = document.querySelector(".profil-likes-price");
+  galleryDOM.innerHTML =
+    galleryDOM.innerHTML +
+    `<article class="profil-like-photograph">
+      <div class="profil-likes">
+        <span id="profil-likes_heart">297 081</span>
+         <i class="fas fa-heart iconeLike"></i>
+      </div>
+      <div class="profil-price">
+        <span id="profil-price-day">${price}€ / jour</span>
+      </div>
+    </article>`;
+}

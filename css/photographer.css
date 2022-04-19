@@ -164,8 +164,8 @@ article.photograph-profil {
   padding-left: 2%;
   border-radius: 5px;
 }
-/* Section lightbox */
-.lightbox {
+/* Section gallery */
+.gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -175,39 +175,42 @@ article.photograph-profil {
   height: 800px;
   margin: 0 5%;
 }
-.lightboxImg {
+.galleryCards {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.lightboxImg .lienLightbox img {
+.linkLightboxImage {
   height: 300px;
   width: 100%;
   border-radius: 5px;
   object-fit: cover;
 }
-.lightboxDescription {
+
+.galleryDescription {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.cardsTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #901c1c;
   font-size: 24px;
 }
-.lightboxLikes {
-  width: 20%;
+.cardsButton {
   display: flex;
   align-items: center;
+  justify-content: space-around;
+  width: 20%;
+  background: unset;
+  border: unset;
+  color: #901c1c;
+  font-size: 24px;
 }
-.lightboxLikes .numberLikes {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-.lightboxLikes .iconeLike {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
+
+/* encart prix */
 .profil-like-photograph {
   width: 22%;
   display: flex;
