@@ -1,62 +1,32 @@
 // !Code JavaScript lié à la page photographer.html
-const sectionPhotographHeader = document.getElementById("photographHeader");
-
+// const sectionPhotographHeader = document.getElementById("photographHeader");
 // Création des éléments du DOM avec classes, id, attributs
-
-function displayPhotographer(name, portrait, city, country, tagLine) {
-  let article = document.createElement("article");
-  sectionPhotographHeader.appendChild(article);
-  article.classList.add("photographProfil");
-
-  let h1 = document.createElement("h1");
-  article.appendChild(h1);
-  h1.innerHTML = name;
-  h1.classList.add("photographName");
-
-  let span = document.createElement("span");
-  article.appendChild(span);
-  span.innerHTML = city + ", " + country;
-  span.classList.add("photographLocation");
-
-  let p = document.createElement("p");
-  article.appendChild(p);
-  p.innerHTML = tagLine;
-  p.classList.add("photographTagline");
-
-  let div = document.createElement("div");
-  sectionPhotographHeader.appendChild(div);
-  div.classList.add("divContactButton");
-
-  let button = document.createElement("button");
-  div.appendChild(button);
-  button.classList.add("contactButton");
-  button.innerHTML = "Contactez-moi";
-  button.setAttribute("onclick", "displayModal()");
-
-  let figure = document.createElement("figure");
-  sectionPhotographHeader.appendChild(figure);
-  figure.setAttribute("id", "photographPortrait");
-  figure.classList.add("photographPortrait");
-
-  let img = document.createElement("img");
-  figure.appendChild(img);
-  img.setAttribute("class", "photographPhotoProfil");
-  img.setAttribute("src", `assets/photographers/${portrait}`);
-  img.setAttribute("alt", "#");
+function displayPhotographer(name, portrait, city, country, tagline) {
+  const sectionPhotographHeader = document.getElementById("photographHeader");
+  sectionPhotographHeader.innerHTML =
+    sectionPhotographHeader.innerHTML +
+    `<article class="photographProfil">
+      <h1 class="photographName">${name}</h1>
+      <span class="photographLocation">${city}, ${country}</span>
+      <p class="photographTagline">${tagline}</p>
+    </article>
+    <div class="divContactButton">
+      <button class="contactButton">Contactez-moi</button>
+    </div>
+    <figure id="photographPortrait" class="photographPortrait">
+      <img class="photographPhotoProfil" src="assets/photographers/${portrait}"></img>
+    </figure>`;
 }
+
 // Transformation et Récupération des données JSON en objet
-// console.log(window.location);
 const url = new URL(window.location);
 const searchParams = new URLSearchParams(url.search);
 
 const photographerId = Number(searchParams.get("id")); // Recupère via la barre d'adresse l'id du photographe en nombre et non en string
-// console.log(photographerId);
 const getPhotographInfo = () => {
   fetch("data/photographers.json")
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.photographers);
-      // console.log(json.media);
       // je récupere les infos des photographes (TOUS)
       const myPhotographer = json.photographers.find(function (photographer) {
         return photographer.id === photographerId;
@@ -85,7 +55,6 @@ const getPhotographInfo = () => {
         }
       }
       for (let i = 0; i < resultSortingMedia.length; i++) {
-        // console.log(resultSortingMedia[i].video);
         displayMedia(
           resultSortingMedia[i].title,
           resultSortingMedia[i].likes,
