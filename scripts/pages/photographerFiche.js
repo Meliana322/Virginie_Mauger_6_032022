@@ -1,5 +1,8 @@
-// !Code JavaScript lié à la page photographer.html
-// const sectionPhotographHeader = document.getElementById("photographHeader");
+// import { toggleModal } from "../utils/contactForm.js";
+import { launchModal } from "../utils/contactForm.js";
+import { closeModal } from "../utils/contactForm.js";
+const modalBg = document.querySelector("#formulaire");
+const closeBtn = document.querySelector(".close-contact");
 // Création des éléments du DOM avec classes, id, attributs
 function displayPhotographer(name, portrait, city, country, tagline) {
   const sectionPhotographHeader = document.getElementById("photographHeader");
@@ -11,7 +14,7 @@ function displayPhotographer(name, portrait, city, country, tagline) {
       <p class="photographTagline">${tagline}</p>
     </article>
     <div class="divContactButton">
-      <button class="contactButton">Contactez-moi</button>
+        <button class="contactButton">Contactez-moi</button>
     </div>
     <figure id="photographPortrait" class="photographPortrait">
       <img class="photographPhotoProfil" src="assets/photographers/${portrait}"></img>
@@ -31,6 +34,9 @@ const getPhotographInfo = () => {
       const myPhotographer = json.photographers.find(function (photographer) {
         return photographer.id === photographerId;
       });
+
+      displayPrice(myPhotographer.price);
+
       // code qui affiche les infos du photographe
       displayPhotographer(
         myPhotographer.name,
@@ -39,6 +45,29 @@ const getPhotographInfo = () => {
         myPhotographer.country,
         myPhotographer.tagline
       );
+      // Ouverture formulaire de contact lors du clic
+
+      const modalbg = document.querySelector("#formulaire");
+      const modalBtn = document.querySelectorAll(".contactButton");
+
+      // launch modal event
+      modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+      // launch modal form
+      function launchModal() {
+        modalbg.style.display = "block";
+      }
+
+      // ┌──────────────────────────────────────────────────────────────────────────────┐
+      // │ CLOSE MODAL                                                                  │
+      // └──────────────────────────────────────────────────────────────────────────────┘
+      function closeModal() {
+        modalbg.style.display = "none";
+      }
+
+      const closeBtn = document.querySelector("img.close-contact");
+
+      closeBtn.addEventListener("click", closeModal);
 
       // !donnnes des media
       //Tableau de tous les médias
@@ -58,34 +87,90 @@ const getPhotographInfo = () => {
         displayMedia(
           resultSortingMedia[i].title,
           resultSortingMedia[i].likes,
-          resultSortingMedia[i].image
+          resultSortingMedia[i].image,
+          resultSortingMedia[i].video
         );
-      }
-      for (let i = 0; i < resultSortingMedia.length; i++) {
-        displayPrice(resultSortingMedia[i].price);
       }
     });
 };
-getPhotographInfo();
 
+getPhotographInfo();
 // !Section gallery
 
-function displayMedia(titre, likes, image) {
-  const galleryDOM = document.querySelector(".gallery");
-  galleryDOM.innerHTML =
-    galleryDOM.innerHTML +
-    `<article class=galleryCards>
-      <a href="#" class="linkLightbox">
-        <img class="linkLightboxImage" src="assets/${photographerId}/${image}"/>
-      </a>
+function displayMedia(titre, likes, image, video) {
+  const galleryDOM = document.querySelector(".wrapper");
+
+  if (image !== undefined) {
+    // Si image existe affiche là
+    galleryDOM.innerHTML =
+      galleryDOM.innerHTML +
+      `<div class="gallery">
+      <div class="image">
+        <span>
+          <img src="assets/${photographerId}/${image}" alt="">
+        </span>
       <div class="galleryDescription">
         <h2 class="cardsTitle">${titre}</h2>
         <button class="cardsButton">
           <span class="cardsLikes">${likes}</span>
           <i class="fas fa-heart icone-like"></i>
         </button>
-    </article>`;
+      </div>
+    </div>
+  <div class="preview-box">
+    <div class="image-box">
+      <p class="current-img"></p>
+      <div class="slide prev"><i class="fas fa-angle-left"></i>
+      </div>
+      <p class="total-img"></p>
+      <div class="slide next"><i class="fas fa-angle-right"></i>
+      </div>
+      <img class="lightbox-img" src="" alt="">
+    </div>
+    <div class="details">
+      <h2 class="lightbox-title-image">sssss</h2>
+      <span class="icon fas fa-times"></span>
+    </div>
+  </div>
+  <div class="shadow"></div>`;
+  } else {
+    galleryDOM.innerHTML = // Sinon affiche la video
+      galleryDOM.innerHTML +
+      `<div class="gallery">
+    <div class="image">
+      <span>
+        <video controls width="">
+         <source src="assets/${photographerId}/${video}"
+      type="video/mp4">
+        </video>
+      </span>
+    <div class="galleryDescription">
+      <h2 class="cardsTitle">${titre}</h2>
+      <button class="cardsButton">
+        <span class="cardsLikes">${likes}</span>
+        <i class="fas fa-heart icone-like"></i>
+      </button>
+    </div>
+  </div>
+<div class="preview-box">
+  <div class="image-box">
+    <p class="current-img"></p>
+    <div class="slide prev"><i class="fas fa-angle-left"></i>
+    </div>
+    <p class="total-img"></p>
+    <div class="slide next"><i class="fas fa-angle-right"></i>
+    </div>
+    <img class="lightbox-img" src="" alt="">
+  </div>
+  <div class="details">
+    <h2 class="lightbox-title-image">sssss</h2>
+    <span class="icon fas fa-times"></span>
+  </div>
+</div>
+<div class="shadow"></div>`;
+  }
 }
+
 // !Section profil-likes-price
 
 function displayPrice(price) {
