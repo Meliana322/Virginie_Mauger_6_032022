@@ -1,9 +1,9 @@
-// import { toggleModal } from "../utils/contactForm.js";
-import { launchModal } from "../utils/contactForm.js";
-import { closeModal } from "../utils/contactForm.js";
-const modalBg = document.querySelector("#formulaire");
-const closeBtn = document.querySelector(".close-contact");
-// Création des éléments du DOM avec classes, id, attributs
+// import { launchModal } from "../utils/contactForm.js";
+// import { closeModal } from "../utils/contactForm.js";
+// const modalBg = document.querySelector("#formulaire");
+// const closeBtn = document.querySelector(".close-contact");
+
+// !Création des éléments du DOM avec classes, id, attributs
 function displayPhotographer(name, portrait, city, country, tagline) {
   const sectionPhotographHeader = document.getElementById("photographHeader");
   sectionPhotographHeader.innerHTML =
@@ -21,10 +21,9 @@ function displayPhotographer(name, portrait, city, country, tagline) {
     </figure>`;
 }
 
-// Transformation et Récupération des données JSON en objet
+// !Transformation et Récupération des données JSON en objet
 const url = new URL(window.location);
 const searchParams = new URLSearchParams(url.search);
-
 const photographerId = Number(searchParams.get("id")); // Recupère via la barre d'adresse l'id du photographe en nombre et non en string
 const getPhotographInfo = () => {
   fetch("data/photographers.json")
@@ -55,12 +54,11 @@ const getPhotographInfo = () => {
 
       // launch modal form
       function launchModal() {
-        modalbg.style.display = "block";
+        modalbg.style.display = "flex";
       }
 
-      // ┌──────────────────────────────────────────────────────────────────────────────┐
-      // │ CLOSE MODAL                                                                  │
-      // └──────────────────────────────────────────────────────────────────────────────┘
+      // CLOSE MODAL
+
       function closeModal() {
         modalbg.style.display = "none";
       }
@@ -69,7 +67,7 @@ const getPhotographInfo = () => {
 
       closeBtn.addEventListener("click", closeModal);
 
-      // !donnnes des media
+      // !donnnées des médias
       //Tableau de tous les médias
       const mediaPhotographer = json.media;
 
@@ -95,7 +93,8 @@ const getPhotographInfo = () => {
 };
 
 getPhotographInfo();
-// !Section gallery
+
+// ! Section gallery
 
 function displayMedia(titre, likes, image, video) {
   const galleryDOM = document.querySelector(".wrapper");
@@ -170,8 +169,8 @@ function displayMedia(titre, likes, image, video) {
 <div class="shadow"></div>`;
   }
 }
-
-// !Section profil-likes-price
+displayMedia();
+// ! Section profil-likes-price
 
 function displayPrice(price) {
   const galleryDOM = document.querySelector(".profil-likes-price");
@@ -187,3 +186,4 @@ function displayPrice(price) {
       </div>
     </article>`;
 }
+displayPrice();
