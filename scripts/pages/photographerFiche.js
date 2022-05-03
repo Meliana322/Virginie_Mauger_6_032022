@@ -20,7 +20,6 @@ function displayPhotographer(name, portrait, city, country, tagline) {
       <img class="photographPhotoProfil" src="assets/photographers/${portrait}"></img>
     </figure>`;
 }
-
 // !Transformation et Récupération des données JSON en objet
 const url = new URL(window.location);
 const searchParams = new URLSearchParams(url.search);
@@ -54,7 +53,7 @@ const getPhotographInfo = () => {
 
       // launch modal form
       function launchModal() {
-        modalbg.style.display = "flex";
+        modalbg.style.display = "block";
       }
 
       // CLOSE MODAL
@@ -89,6 +88,51 @@ const getPhotographInfo = () => {
           resultSortingMedia[i].video
         );
       }
+
+      // ajouter event listene de likes
+
+      // ! Total des likes
+      const profilLikesHeart = document.querySelector("#profil-likes_heart");
+
+      // J'additionne tous les likes de chaque médias pour obtenir le total
+      const totalLikes = resultSortingMedia.reduce((total, media) => {
+        return total + media.likes;
+      }, 0);
+
+      profilLikesHeart.textContent = totalLikes;
+
+      console.log(totalLikes);
+      document
+        .querySelector("#filters-select")
+        .addEventListener("change", function (e) {
+          if (e.target.value === "popularite") {
+            resultSortingMedia.sort(function (a, b) {
+              if (a.likes > b.likes) {
+                return -1;
+              } else {
+                return 1;
+              }
+            });
+          }
+          console.log(resultSortingMedia);
+
+          // if (e.target.value === "date") {
+          // }
+
+          // if (e.target.value === "titre") {
+
+          // }
+
+          document.querySelector(".wrapper").innerHTML = "";
+          for (let i = 0; i < resultSortingMedia.length; i++) {
+            displayMedia(
+              resultSortingMedia[i].title,
+              resultSortingMedia[i].likes,
+              resultSortingMedia[i].image,
+              resultSortingMedia[i].video
+            );
+          }
+        });
     });
 };
 
@@ -116,22 +160,22 @@ function displayMedia(titre, likes, image, video) {
         </button>
       </div>
     </div>
-  <div class="preview-box">
-    <div class="image-box">
-      <p class="current-img"></p>
-      <div class="slide prev"><i class="fas fa-angle-left"></i>
+    <div class="preview-box">
+      <div class="image-box">
+        <p class="current-img"></p>
+        <div class="slide prev"><i class="fas fa-angle-left"></i>
+        </div>
+        <p class="total-img"></p>
+        <div class="slide next"><i class="fas fa-angle-right"></i>
+        </div>
+        <img class="lightbox-img" src="" alt="">
       </div>
-      <p class="total-img"></p>
-      <div class="slide next"><i class="fas fa-angle-right"></i>
+      <div class="details">
+        <h2 class="lightbox-title-image">sssss</h2>
+        <span class="icon fas fa-times"></span>
       </div>
-      <img class="lightbox-img" src="" alt="">
     </div>
-    <div class="details">
-      <h2 class="lightbox-title-image">sssss</h2>
-      <span class="icon fas fa-times"></span>
-    </div>
-  </div>
-  <div class="shadow"></div>`;
+    <div class="shadow"></div>`;
   } else {
     galleryDOM.innerHTML = // Sinon affiche la video
       galleryDOM.innerHTML +
@@ -151,25 +195,25 @@ function displayMedia(titre, likes, image, video) {
       </button>
     </div>
   </div>
-<div class="preview-box">
-  <div class="image-box">
-    <p class="current-img"></p>
-    <div class="slide prev"><i class="fas fa-angle-left"></i>
+  <div class="preview-box">
+    <div class="image-box">
+      <p class="current-img"></p>
+      <div class="slide prev"><i class="fas fa-angle-left"></i>
+      </div>
+      <p class="total-img"></p>
+      <div class="slide next"><i class="fas fa-angle-right"></i>
+      </div>
+      <img class="lightbox-img" src="" alt="">
     </div>
-    <p class="total-img"></p>
-    <div class="slide next"><i class="fas fa-angle-right"></i>
+    <div class="details">
+      <h2 class="lightbox-title-image">sssss</h2>
+      <span class="icon fas fa-times"></span>
     </div>
-    <img class="lightbox-img" src="" alt="">
   </div>
-  <div class="details">
-    <h2 class="lightbox-title-image">sssss</h2>
-    <span class="icon fas fa-times"></span>
-  </div>
-</div>
-<div class="shadow"></div>`;
+  <div class="shadow"></div>`;
   }
 }
-displayMedia();
+
 // ! Section profil-likes-price
 
 function displayPrice(price) {
@@ -178,7 +222,7 @@ function displayPrice(price) {
     galleryDOM.innerHTML +
     `<article class="profil-like-photograph">
       <div class="profil-likes">
-        <span id="profil-likes_heart">297 081</span>
+        <span id="profil-likes_heart"></span>
          <i class="fas fa-heart iconeLike"></i>
       </div>
       <div class="profil-price">
@@ -186,4 +230,3 @@ function displayPrice(price) {
       </div>
     </article>`;
 }
-displayPrice();

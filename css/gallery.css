@@ -1,22 +1,17 @@
-::selection {
-  color: #fff;
-  background: #007bff;
-}
-
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 30% 30% 30%;
   grid-template-rows: 1fr 1fr;
   gap: 0 60px;
   margin: 0 5%;
 }
 .gallery {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: unset;
 }
 .gallery .image {
   display: flex;
@@ -30,6 +25,7 @@
   overflow: hidden;
   height: 300px;
   color: #901c1c;
+  border-radius: 5px;
 }
 .gallery .image img {
   width: 100%;
@@ -49,26 +45,31 @@
   color: #901c1c;
 }
 .galleryDescription h2 {
-  font-size: 24px;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 button.cardsButton {
   height: 100%;
   display: flex;
   align-items: center;
-  width: 20%;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   background-color: unset;
   border: unset;
+  width: 30%;
+  justify-content: flex-end;
 }
 button.cardsButton .cardsLikes {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
 }
 button.cardsButton i {
   color: #901c1c;
+  width: 15px;
 }
 .preview-box {
   position: fixed;
