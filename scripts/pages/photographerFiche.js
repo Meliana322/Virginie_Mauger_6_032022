@@ -47,7 +47,6 @@ const getPhotographInfo = () => {
 
       const modalbg = document.querySelector("#formulaire");
       const modalBtn = document.querySelectorAll(".contactButton");
-
       // launch modal event
       modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -85,13 +84,25 @@ const getPhotographInfo = () => {
           resultSortingMedia[i].title,
           resultSortingMedia[i].likes,
           resultSortingMedia[i].image,
-          resultSortingMedia[i].video
+          resultSortingMedia[i].video,
+          resultSortingMedia[i].date
         );
       }
 
-      // ajouter event listene de likes
+      // ajouter event listener de likes
 
-      // ! Total des likes
+      const container = document.querySelectorAll(".cardsButton");
+
+      container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > add)
+
+      function AddLikes() {
+        let nblikes = Number(this.querySelector(".cardsLikes").textContent);
+        console.log("current : ", nblikes);
+        nblikes++; // après incrémentation ? afficher le résultat après
+        console.log("next : ", nblikes);
+      }
+
+      // ! Total des likes de chaque photographe
       const profilLikesHeart = document.querySelector("#profil-likes_heart");
 
       // J'additionne tous les likes de chaque médias pour obtenir le total
@@ -100,13 +111,13 @@ const getPhotographInfo = () => {
       }, 0);
 
       profilLikesHeart.textContent = totalLikes;
-
-      console.log(totalLikes);
+      // ! Trie des médias par popularité, titre ou dats
       document
         .querySelector("#filters-select")
         .addEventListener("change", function (e) {
           if (e.target.value === "popularite") {
             resultSortingMedia.sort(function (a, b) {
+              // tri par popularité
               if (a.likes > b.likes) {
                 return -1;
               } else {
@@ -114,15 +125,27 @@ const getPhotographInfo = () => {
               }
             });
           }
-          console.log(resultSortingMedia);
-
-          // if (e.target.value === "date") {
-          // }
-
-          // if (e.target.value === "titre") {
-
-          // }
-
+          if (e.target.value === "titre") {
+            resultSortingMedia.sort(function (a, b) {
+              //tri par titre
+              if (a.title > b.title) {
+                return 1;
+              } else {
+                return -1;
+              }
+            });
+          }
+          if (e.target.value === "date") {
+            resultSortingMedia.sort(function (a, b) {
+              // tri par date
+              if (a.date > b.date) {
+                return 1;
+              } else {
+                return -1;
+              }
+            });
+          }
+          // Parcours du tableau des médias
           document.querySelector(".wrapper").innerHTML = "";
           for (let i = 0; i < resultSortingMedia.length; i++) {
             displayMedia(
@@ -135,13 +158,12 @@ const getPhotographInfo = () => {
         });
     });
 };
-
 getPhotographInfo();
 
 // ! Section gallery
-
+const galleryDOM = document.querySelector(".wrapper");
 function displayMedia(titre, likes, image, video) {
-  const galleryDOM = document.querySelector(".wrapper");
+  // const galleryDOM = document.querySelector(".wrapper");
 
   if (image !== undefined) {
     // Si image existe affiche là
@@ -158,24 +180,7 @@ function displayMedia(titre, likes, image, video) {
           <span class="cardsLikes">${likes}</span>
           <i class="fas fa-heart icone-like"></i>
         </button>
-      </div>
-    </div>
-    <div class="preview-box">
-      <div class="image-box">
-        <p class="current-img"></p>
-        <div class="slide prev"><i class="fas fa-angle-left"></i>
-        </div>
-        <p class="total-img"></p>
-        <div class="slide next"><i class="fas fa-angle-right"></i>
-        </div>
-        <img class="lightbox-img" src="" alt="">
-      </div>
-      <div class="details">
-        <h2 class="lightbox-title-image">sssss</h2>
-        <span class="icon fas fa-times"></span>
-      </div>
-    </div>
-    <div class="shadow"></div>`;
+      </div>`;
   } else {
     galleryDOM.innerHTML = // Sinon affiche la video
       galleryDOM.innerHTML +
@@ -194,25 +199,30 @@ function displayMedia(titre, likes, image, video) {
         <i class="fas fa-heart icone-like"></i>
       </button>
     </div>
-  </div>
-  <div class="preview-box">
-    <div class="image-box">
-      <p class="current-img"></p>
-      <div class="slide prev"><i class="fas fa-angle-left"></i>
-      </div>
-      <p class="total-img"></p>
-      <div class="slide next"><i class="fas fa-angle-right"></i>
-      </div>
-      <img class="lightbox-img" src="" alt="">
-    </div>
-    <div class="details">
-      <h2 class="lightbox-title-image">sssss</h2>
-      <span class="icon fas fa-times"></span>
-    </div>
-  </div>
-  <div class="shadow"></div>`;
+  </div>`;
   }
 }
+
+// ! Ligthbox
+// const imageDom = galleryDOM.children;
+// galleryDOM.forEach((imageDom) => {
+//   imageDom.addEventListener("click", () => {
+//     Ligthbox.show();
+//   });
+// });
+
+// class Ligthbox {
+//   constructor(listElement) {
+//     this.currentElement = null;
+//     this.listElement = listElement;
+//   }
+//   show(element) {
+//     this.currentElement = element;
+//   }
+//   next() {}
+//   previous() {}
+//   manageEvent() {}
+// }
 
 // ! Section profil-likes-price
 
