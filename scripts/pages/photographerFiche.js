@@ -43,6 +43,10 @@ const getPhotographInfo = () => {
         myPhotographer.country,
         myPhotographer.tagline
       );
+
+      // ! Section Formulaire de contact
+      const nameForm = document.querySelector(".name-form");
+      nameForm.innerHTML = myPhotographer.name;
       // Ouverture formulaire de contact lors du clic
 
       const modalbg = document.querySelector("#formulaire");
@@ -57,13 +61,58 @@ const getPhotographInfo = () => {
 
       // CLOSE MODAL
 
+      const closeBtn = document.querySelector("img.close-contact");
+
       function closeModal() {
         modalbg.style.display = "none";
       }
 
-      const closeBtn = document.querySelector("img.close-contact");
-
       closeBtn.addEventListener("click", closeModal);
+
+      const formData = document.querySelectorAll(".formData");
+      const firstName = document.getElementById("first");
+      const lastName = document.getElementById("last");
+      const eMail = document.getElementById("email");
+
+      document
+        .getElementById("formulaire")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          let error = "";
+
+          // Prénom
+          if (firstName.value.length < 2) {
+            error = "Veuillez entrer 2 caractères ou plus pour ce champ";
+            formData[0].setAttribute("data-error", error);
+            formData[0].setAttribute("data-error-visible", true); // si data-error = true affiche moi le msg
+          } else {
+            formData[0].setAttribute("data-error-visible", false);
+          }
+
+          // Nom
+          if (lastName.value.length < 2) {
+            error = "Veuillez entrer 2 caractères ou plus pour ce champ";
+            formData[1].setAttribute("data-error", error);
+            formData[1].setAttribute("data-error-visible", true);
+          } else {
+            formData[1].setAttribute("data-error-visible", false);
+          }
+          // Email
+          if (
+            !eMail.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,64})+$/)
+          ) {
+            error = "Merci de saisir une adresse mail valide";
+            formData[2].setAttribute("data-error", error); // Autre manière de faire sans utiliser tableau mais utilisation des noeuds
+            formData[2].setAttribute("data-error-visible", true);
+          } else {
+            formData[2].setAttribute("data-error-visible", false);
+          }
+
+          // Disparition du formulaire, affichage de la modale d'envoi de formulaire
+          if (error === "") {
+            modalbg.style.display = "none";
+          }
+        });
 
       // !donnnées des médias
       //Tableau de tous les médias
@@ -92,14 +141,22 @@ const getPhotographInfo = () => {
       // ajouter event listener de likes
 
       const container = document.querySelectorAll(".cardsButton");
-
-      container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > add)
+      container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > addLikes)
 
       function AddLikes() {
-        let nblikes = Number(this.querySelector(".cardsLikes").textContent);
-        console.log("current : ", nblikes);
-        nblikes++; // après incrémentation ? afficher le résultat après
-        console.log("next : ", nblikes);
+        let nblikes = Number(this.querySelector(".cardsLikes").textContent); // Je récupère le nombre de likes
+
+        // if () {
+        nblikes++; // J' incrémente
+        // console.log("next : ", nblikes);
+
+        return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat incrémenté
+
+        // } else {
+        // nblikes--; // Je décrémente
+
+        // return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat décrémenté
+        // }
       }
 
       // ! Total des likes de chaque photographe
@@ -111,6 +168,7 @@ const getPhotographInfo = () => {
       }, 0);
 
       profilLikesHeart.textContent = totalLikes;
+
       // ! Trie des médias par popularité, titre ou dats
       document
         .querySelector("#filters-select")
