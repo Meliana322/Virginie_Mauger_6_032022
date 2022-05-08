@@ -141,34 +141,34 @@ const getPhotographInfo = () => {
       // ajouter event listener de likes
 
       const container = document.querySelectorAll(".cardsButton");
+      const likeIcone = document.getElementsByClassName("far");
+
       container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > addLikes)
 
       function AddLikes() {
         let nblikes = Number(this.querySelector(".cardsLikes").textContent); // Je récupère le nombre de likes
+        if (likeIcone[1].classList.contains("active")) {
+          likeIcone[1].classList.remove("active");
+          nblikes--; // Je décrémente
 
-        // if () {
-        nblikes++; // J' incrémente
-        // console.log("next : ", nblikes);
+          return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat incrémenté
+        } else {
+          likeIcone[1].classList.add("active");
+          nblikes++; // J' incrémente
 
-        return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat incrémenté
-
-        // } else {
-        // nblikes--; // Je décrémente
-
-        // return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat décrémenté
-        // }
+          return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat décrémenté
+        }
       }
-
       // ! Total des likes de chaque photographe
       const profilLikesHeart = document.querySelector("#profil-likes_heart");
 
       // J'additionne tous les likes de chaque médias pour obtenir le total
-      const totalLikes = resultSortingMedia.reduce((total, media) => {
+      let totalLikes = resultSortingMedia.reduce((total, media) => {
         return total + media.likes;
       }, 0);
 
       profilLikesHeart.textContent = totalLikes;
-
+      // console.log(totalLikes);
       // ! Trie des médias par popularité, titre ou dats
       document
         .querySelector("#filters-select")
@@ -218,25 +218,23 @@ const getPhotographInfo = () => {
 };
 getPhotographInfo();
 
-// ! Section gallery
+// ! Section wrapper
 const galleryDOM = document.querySelector(".wrapper");
 function displayMedia(titre, likes, image, video) {
-  // const galleryDOM = document.querySelector(".wrapper");
-
   if (image !== undefined) {
     // Si image existe affiche là
     galleryDOM.innerHTML =
       galleryDOM.innerHTML +
       `<div class="gallery">
       <div class="image">
-        <span>
+        <a class="link-media" aria-label="open lightbox view">
           <img src="assets/${photographerId}/${image}" alt="">
-        </span>
+        </a>
       <div class="galleryDescription">
         <h2 class="cardsTitle">${titre}</h2>
         <button class="cardsButton">
           <span class="cardsLikes">${likes}</span>
-          <i class="fas fa-heart icone-like"></i>
+          <i class="far fa-heart heart icone-like"></i>
         </button>
       </div>`;
   } else {
@@ -244,42 +242,28 @@ function displayMedia(titre, likes, image, video) {
       galleryDOM.innerHTML +
       `<div class="gallery">
     <div class="image">
-      <span>
+      <a class="link-media" aria-label="open lightbox view">
         <video controls width="">
          <source src="assets/${photographerId}/${video}"
       type="video/mp4">
         </video>
-      </span>
+      </a>
     <div class="galleryDescription">
       <h2 class="cardsTitle">${titre}</h2>
       <button class="cardsButton">
         <span class="cardsLikes">${likes}</span>
-        <i class="fas fa-heart icone-like"></i>
+        <i class="far fa-heart heart icone-like"></i>
       </button>
     </div>
   </div>`;
   }
 }
 
-// ! Ligthbox
-// const imageDom = galleryDOM.children;
-// galleryDOM.forEach((imageDom) => {
-//   imageDom.addEventListener("click", () => {
-//     Ligthbox.show();
-//   });
-// });
+// ! Section lightbox
 
-// class Ligthbox {
-//   constructor(listElement) {
-//     this.currentElement = null;
-//     this.listElement = listElement;
-//   }
-//   show(element) {
-//     this.currentElement = element;
-//   }
-//   next() {}
-//   previous() {}
-//   manageEvent() {}
+const galleryImage = document.querySelectorAll(".gallery");
+// function openLightbox() {
+//   btnLightbox.style.display = "block";
 // }
 
 // ! Section profil-likes-price
@@ -298,3 +282,5 @@ function displayPrice(price) {
       </div>
     </article>`;
 }
+
+// ! Ligthbox

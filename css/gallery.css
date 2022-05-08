@@ -19,7 +19,7 @@
   padding: 7px;
   width: 100%;
 }
-.gallery .image span {
+.gallery .image .link-media {
   display: flex;
   width: 100%;
   overflow: hidden;
@@ -67,17 +67,74 @@ button.cardsButton .cardsLikes {
   justify-content: flex-end;
   padding-right: 5px;
 }
-button.cardsButton i {
+
+button.cardsButton .far {
   color: #901c1c;
   width: 15px;
 }
-/* Lightbox */
 
-/* #ligthbox {
+/* Lightbox */
+.lightbox {
+  display: none;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #80808080;
-  top: 0px;
-  left: 0px;
-} */
+  background-color: #fff;
+  z-index: 5;
+  animation: lightboxIn 0.5s;
+}
+.ligthbox__next,
+.ligthbox_prev {
+  border: none;
+  background: url(/assets/icons/arrow.svg) center center no-repeat;
+  height: 96px;
+  width: 60px;
+  position: fixed;
+  top: 50%;
+  margin-top: -14px;
+  z-index: 6;
+  text-indent: -100000px;
+  cursor: pointer;
+  right: 2%;
+}
+.ligthbox_prev {
+  right: auto;
+  left: 2%;
+  transform: rotate(180deg);
+}
+
+.ligthbox__close {
+  border: none;
+  background: url(/assets/icons/close.svg) center center no-repeat;
+  height: 80px;
+  width: 80px;
+  text-indent: -100000px;
+  cursor: pointer;
+  position: fixed;
+  top: 10vh;
+  right: 36px;
+}
+.lightbox__container img {
+  max-width: 75vw;
+  height: auto;
+  animation: lightboxIn 0.5s;
+}
+.lightbox__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
