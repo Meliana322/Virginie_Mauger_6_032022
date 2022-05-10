@@ -4,6 +4,8 @@
 // const closeBtn = document.querySelector(".close-contact");
 
 // !Création des éléments du DOM avec classes, id, attributs
+import { Media } from "../../class/Media.js";
+
 function displayPhotographer(name, portrait, city, country, tagline) {
   const sectionPhotographHeader = document.getElementById("photographHeader");
   sectionPhotographHeader.innerHTML =
@@ -51,6 +53,7 @@ const getPhotographInfo = () => {
 
       const modalbg = document.querySelector("#formulaire");
       const modalBtn = document.querySelectorAll(".contactButton");
+      console.log(modalBtn);
       // launch modal event
       modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -129,43 +132,65 @@ const getPhotographInfo = () => {
         }
       }
       for (let i = 0; i < resultSortingMedia.length; i++) {
-        displayMedia(
+        const newMedia = new Media(
           resultSortingMedia[i].title,
           resultSortingMedia[i].likes,
           resultSortingMedia[i].image,
           resultSortingMedia[i].video,
-          resultSortingMedia[i].date
+          resultSortingMedia[i].date,
+          photographerId
         );
+
+        newMedia.display();
+        resultSortingMedia[i] = newMedia;
+        // displayMedia(
+        //   newMedia.title,
+        //   newMedia.likes,
+        //   newMedia.image,
+        //   newMedia.video,
+        //   newMedia.date
+        // );
+
+        // displayMedia(
+        //   resultSortingMedia[i].title,
+        //   resultSortingMedia[i].likes,
+        //   resultSortingMedia[i].image,
+        //   resultSortingMedia[i].video,
+        //   resultSortingMedia[i].date
+        // );
       }
 
       // ajouter event listener de likes
 
-      const container = document.querySelectorAll(".cardsButton");
-      const likeIcone = document.getElementsByClassName("far");
+      // const container = document.querySelectorAll(".cardsButton");
+      // const likeIcone = document.getElementsByClassName("far");
 
-      container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > addLikes)
+      // container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > addLikes)
 
-      function AddLikes() {
-        let nblikes = Number(this.querySelector(".cardsLikes").textContent); // Je récupère le nombre de likes
-        if (likeIcone[1].classList.contains("active")) {
-          likeIcone[1].classList.remove("active");
-          nblikes--; // Je décrémente
+      // function AddLikes() {
+      //   let nblikes = Number(this.querySelector(".cardsLikes").textContent); // Je récupère le nombre de likes
+      //   console.log(nblikes);
+      //   if (likeIcone[1].classList.contains("focus")) {
+      //     likeIcone[1].classList.remove("focus");
+      //     nblikes--; // Je décrémente
 
-          return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat incrémenté
-        } else {
-          likeIcone[1].classList.add("active");
-          nblikes++; // J' incrémente
+      //     return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat incrémenté
+      //   } else {
+      //     likeIcone[1].classList.add("focus");
+      //     nblikes++; // J' incrémente
 
-          return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat décrémenté
-        }
-      }
+      //     return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat décrémenté
+      //   }
+      // }
       // ! Total des likes de chaque photographe
       const profilLikesHeart = document.querySelector("#profil-likes_heart");
-
+      // console.log(profilLikesHeart);
       // J'additionne tous les likes de chaque médias pour obtenir le total
       let totalLikes = resultSortingMedia.reduce((total, media) => {
         return total + media.likes;
       }, 0);
+
+      console.log(totalLikes);
 
       profilLikesHeart.textContent = totalLikes;
       // console.log(totalLikes);
@@ -227,7 +252,7 @@ function displayMedia(titre, likes, image, video) {
       galleryDOM.innerHTML +
       `<div class="gallery">
       <div class="image">
-        <a class="link-media" aria-label="open lightbox view">
+      <a href="#lightbox" class="link-media" aria-label="open lightbox view">
           <img src="assets/${photographerId}/${image}" alt="">
         </a>
       <div class="galleryDescription">
@@ -242,7 +267,7 @@ function displayMedia(titre, likes, image, video) {
       galleryDOM.innerHTML +
       `<div class="gallery">
     <div class="image">
-      <a class="link-media" aria-label="open lightbox view">
+      <a href="#lightbox" class="link-media" aria-label="open lightbox view">
         <video controls width="">
          <source src="assets/${photographerId}/${video}"
       type="video/mp4">
@@ -258,13 +283,6 @@ function displayMedia(titre, likes, image, video) {
   </div>`;
   }
 }
-
-// ! Section lightbox
-
-const galleryImage = document.querySelectorAll(".gallery");
-// function openLightbox() {
-//   btnLightbox.style.display = "block";
-// }
 
 // ! Section profil-likes-price
 
@@ -284,3 +302,37 @@ function displayPrice(price) {
 }
 
 // ! Ligthbox
+class Lightbox {
+  static init() {
+    const links = document.querySelectorAll("a[href]").forEach((link) =>
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        new Lightbox(e.currentTarget.getAttribute("href"));
+      })
+    );
+  }
+  /**
+   *
+   * @param {string} url URL de l'image
+   */
+  constructor(url) {
+    const element = this.buildDOM(url);
+    document.body.appendChild(element);
+  }
+
+  /**
+   *
+   * @param {string} url URL de l'image
+   * @return {HTMLElement}
+   */
+  buildDOM(url) {
+    const dom = document.createElement("div");
+    dom.ClassList.add("lightbox");
+    dom.innerHTML = `<button class="ligthbox__close">Fermer</button>
+  <button class="ligthbox__next">Suivant</button>
+  <button class="ligthbox_prev">Précédent</button>
+  <div class="lightbox__container"><img src="/assets/243/Animals_Rainbow.jpg" alt=""></div>
+  <div class="title-image"></div>`;
+    return dom;
+  }
+}

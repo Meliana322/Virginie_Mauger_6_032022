@@ -72,10 +72,12 @@ button.cardsButton .far {
   color: #901c1c;
   width: 15px;
 }
+button.cardsButton .far:focus {
+  font-weight: 900 !important;
+}
 
 /* Lightbox */
 .lightbox {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
