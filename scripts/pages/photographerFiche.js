@@ -300,39 +300,3 @@ function displayPrice(price) {
       </div>
     </article>`;
 }
-
-// ! Ligthbox
-class Lightbox {
-  static init() {
-    const links = document.querySelectorAll("a[href]").forEach((link) =>
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        new Lightbox(e.currentTarget.getAttribute("href"));
-      })
-    );
-  }
-  /**
-   *
-   * @param {string} url URL de l'image
-   */
-  constructor(url) {
-    const element = this.buildDOM(url);
-    document.body.appendChild(element);
-  }
-
-  /**
-   *
-   * @param {string} url URL de l'image
-   * @return {HTMLElement}
-   */
-  buildDOM(url) {
-    const dom = document.createElement("div");
-    dom.ClassList.add("lightbox");
-    dom.innerHTML = `<button class="ligthbox__close">Fermer</button>
-  <button class="ligthbox__next">Suivant</button>
-  <button class="ligthbox_prev">Précédent</button>
-  <div class="lightbox__container"><img src="/assets/243/Animals_Rainbow.jpg" alt=""></div>
-  <div class="title-image"></div>`;
-    return dom;
-  }
-}
