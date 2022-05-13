@@ -1,8 +1,3 @@
-// import { launchModal } from "../utils/contactForm.js";
-// import { closeModal } from "../utils/contactForm.js";
-// const modalBg = document.querySelector("#formulaire");
-// const closeBtn = document.querySelector(".close-contact");
-
 // !Création des éléments du DOM avec classes, id, attributs
 import { Media } from "../../class/Media.js";
 
@@ -143,48 +138,10 @@ const getPhotographInfo = () => {
 
         newMedia.display();
         resultSortingMedia[i] = newMedia;
-        // displayMedia(
-        //   newMedia.title,
-        //   newMedia.likes,
-        //   newMedia.image,
-        //   newMedia.video,
-        //   newMedia.date
-        // );
-
-        // displayMedia(
-        //   resultSortingMedia[i].title,
-        //   resultSortingMedia[i].likes,
-        //   resultSortingMedia[i].image,
-        //   resultSortingMedia[i].video,
-        //   resultSortingMedia[i].date
-        // );
       }
 
-      // ajouter event listener de likes
-
-      // const container = document.querySelectorAll(".cardsButton");
-      // const likeIcone = document.getElementsByClassName("far");
-
-      // container.forEach((item) => item.addEventListener("click", AddLikes)); // container > sur chaque item > addEventListener > (click, fc > addLikes)
-
-      // function AddLikes() {
-      //   let nblikes = Number(this.querySelector(".cardsLikes").textContent); // Je récupère le nombre de likes
-      //   console.log(nblikes);
-      //   if (likeIcone[1].classList.contains("focus")) {
-      //     likeIcone[1].classList.remove("focus");
-      //     nblikes--; // Je décrémente
-
-      //     return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat incrémenté
-      //   } else {
-      //     likeIcone[1].classList.add("focus");
-      //     nblikes++; // J' incrémente
-
-      //     return (this.querySelector(".cardsLikes").textContent = nblikes); // J'affiche le résultat décrémenté
-      //   }
-      // }
       // ! Total des likes de chaque photographe
       const profilLikesHeart = document.querySelector("#profil-likes_heart");
-      // console.log(profilLikesHeart);
       // J'additionne tous les likes de chaque médias pour obtenir le total
       let totalLikes = resultSortingMedia.reduce((total, media) => {
         return total + media.likes;
@@ -228,61 +185,24 @@ const getPhotographInfo = () => {
               }
             });
           }
-          // Parcours du tableau des médias
+          // Je trie puis je rappelle ma fonction pour un reset suite triage
           document.querySelector(".wrapper").innerHTML = "";
           for (let i = 0; i < resultSortingMedia.length; i++) {
-            displayMedia(
+            const resetMedia = new Media(
               resultSortingMedia[i].title,
               resultSortingMedia[i].likes,
               resultSortingMedia[i].image,
-              resultSortingMedia[i].video
+              resultSortingMedia[i].video,
+              resultSortingMedia[i].date,
+              photographerId
             );
+
+            resetMedia.display();
           }
         });
     });
 };
 getPhotographInfo();
-
-// ! Section wrapper
-const galleryDOM = document.querySelector(".wrapper");
-function displayMedia(titre, likes, image, video) {
-  if (image !== undefined) {
-    // Si image existe affiche là
-    galleryDOM.innerHTML =
-      galleryDOM.innerHTML +
-      `<div class="gallery">
-      <div class="image">
-      <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-          <img src="assets/${photographerId}/${image}" alt="">
-        </a>
-      <div class="galleryDescription">
-        <h2 class="cardsTitle">${titre}</h2>
-        <button class="cardsButton">
-          <span class="cardsLikes">${likes}</span>
-          <i class="far fa-heart heart icone-like"></i>
-        </button>
-      </div>`;
-  } else {
-    galleryDOM.innerHTML = // Sinon affiche la video
-      galleryDOM.innerHTML +
-      `<div class="gallery">
-    <div class="image">
-      <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-        <video controls width="">
-         <source src="assets/${photographerId}/${video}"
-      type="video/mp4">
-        </video>
-      </a>
-    <div class="galleryDescription">
-      <h2 class="cardsTitle">${titre}</h2>
-      <button class="cardsButton">
-        <span class="cardsLikes">${likes}</span>
-        <i class="far fa-heart heart icone-like"></i>
-      </button>
-    </div>
-  </div>`;
-  }
-}
 
 // ! Section profil-likes-price
 
