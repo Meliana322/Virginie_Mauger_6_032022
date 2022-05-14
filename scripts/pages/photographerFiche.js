@@ -48,7 +48,7 @@ const getPhotographInfo = () => {
 
       const modalbg = document.querySelector("#formulaire");
       const modalBtn = document.querySelectorAll(".contactButton");
-      console.log(modalBtn);
+
       // launch modal event
       modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -133,7 +133,8 @@ const getPhotographInfo = () => {
           resultSortingMedia[i].image,
           resultSortingMedia[i].video,
           resultSortingMedia[i].date,
-          photographerId
+          photographerId,
+          resultSortingMedia
         );
 
         newMedia.display();
@@ -141,16 +142,17 @@ const getPhotographInfo = () => {
       }
 
       // ! Total des likes de chaque photographe
-      const profilLikesHeart = document.querySelector("#profil-likes_heart");
-      // J'additionne tous les likes de chaque médias pour obtenir le total
-      let totalLikes = resultSortingMedia.reduce((total, media) => {
-        return total + media.likes;
-      }, 0);
+      // const profilLikesHeart = document.querySelector("#profil-likes_heart");
 
-      console.log(totalLikes);
+      // // J'additionne tous les likes de chaque médias pour obtenir le total
+      // let totalLikes = resultSortingMedia.reduce((total, media) => {
+      //   return total + media.likes;
+      // }, 0);
 
-      profilLikesHeart.textContent = totalLikes;
       // console.log(totalLikes);
+
+      // profilLikesHeart.textContent = totalLikes;
+      // // console.log(totalLikes);
       // ! Trie des médias par popularité, titre ou dats
       document
         .querySelector("#filters-select")
@@ -188,7 +190,7 @@ const getPhotographInfo = () => {
           // Je trie puis je rappelle ma fonction pour un reset suite triage
           document.querySelector(".wrapper").innerHTML = "";
           for (let i = 0; i < resultSortingMedia.length; i++) {
-            const resetMedia = new Media(
+            const newMedia = new Media(
               resultSortingMedia[i].title,
               resultSortingMedia[i].likes,
               resultSortingMedia[i].image,
@@ -197,7 +199,7 @@ const getPhotographInfo = () => {
               photographerId
             );
 
-            resetMedia.display();
+            newMedia.display();
           }
         });
     });
