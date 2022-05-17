@@ -74,59 +74,95 @@ button.cardsButton .far {
 }
 
 /* Lightbox */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+  padding: 1px;
+}
+::-webkit-scrollbar-thumb {
+  background: #9ca2b0;
+  border-radius: 4px;
+}
+.lightbox::-webkit-scrollbar-track {
+  background: black;
+  padding: 1px;
+}
+.lightbox::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 .lightbox {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #fff;
-  z-index: 5;
+  z-index: 10;
+  overflow: auto;
   animation: lightboxIn 0.5s;
 }
-.ligthbox__next,
-.ligthbox_prev {
-  border: none;
-  background: url(/assets/icons/arrow.svg) center center no-repeat;
-  height: 96px;
-  width: 60px;
-  position: fixed;
-  top: 50%;
-  margin-top: -14px;
-  z-index: 6;
-  text-indent: -100000px;
-  cursor: pointer;
-  right: 2%;
-}
-.ligthbox_prev {
-  right: auto;
-  left: 2%;
-  transform: rotate(180deg);
+
+.lightbox.fadeOut {
+  opacity: 0;
 }
 
-.ligthbox__close {
+.lightbox__next,
+.lightbox__prev {
   border: none;
-  background: url(/assets/icons/close.svg) center center no-repeat;
-  height: 80px;
-  width: 80px;
-  text-indent: -100000px;
-  cursor: pointer;
+  background: url(/assets/icons/arrow.svg) center center / 40px 48px no-repeat;
+  color: #911c1c;
+  width: 50px;
+  height: 100%;
   position: fixed;
-  top: 10vh;
-  right: 36px;
+  top: 0;
+  margin-top: -14px;
+  z-index: 11;
+  cursor: pointer;
+  right: 0;
+}
+
+.lightbox__prev {
+  right: auto;
+  left: 0;
+  transform: rotate(180deg);
+}
+.lightbox__close {
+  border: none;
+  background: url(/assets/icons/close.svg) center center / 100% 100% no-repeat;
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  width: 22px;
+  height: 22px;
+  z-index: 12;
+}
+
+.lightbox button {
+  cursor: pointer;
+  text-indent: -10000px;
 }
 .lightbox__container img {
-  max-width: 75vw;
+  max-width: 100%;
   height: auto;
   animation: lightboxIn 0.5s;
 }
+
 .lightbox__container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 10px 50px;
+}
+
+.lightbox__loader {
+  width: 38px;
+  height: 38px;
+  opacity: 0.8;
+  background: url(/assets/icons/loader.svg) center center no-repeat;
 }
 
 @keyframes lightboxIn {

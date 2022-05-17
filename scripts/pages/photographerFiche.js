@@ -1,5 +1,6 @@
 // !Création des éléments du DOM avec classes, id, attributs
 import { Media } from "../../class/Media.js";
+import { Lightbox } from "../../class/Lightbox.js";
 
 function displayPhotographer(name, portrait, city, country, tagline) {
   const sectionPhotographHeader = document.getElementById("photographHeader");
@@ -141,18 +142,8 @@ const getPhotographInfo = () => {
         resultSortingMedia[i] = newMedia;
       }
 
-      // ! Total des likes de chaque photographe
-      // const profilLikesHeart = document.querySelector("#profil-likes_heart");
+      Lightbox.init();
 
-      // // J'additionne tous les likes de chaque médias pour obtenir le total
-      // let totalLikes = resultSortingMedia.reduce((total, media) => {
-      //   return total + media.likes;
-      // }, 0);
-
-      // console.log(totalLikes);
-
-      // profilLikesHeart.textContent = totalLikes;
-      // // console.log(totalLikes);
       // ! Trie des médias par popularité, titre ou dats
       document
         .querySelector("#filters-select")
@@ -190,17 +181,9 @@ const getPhotographInfo = () => {
           // Je trie puis je rappelle ma fonction pour un reset suite triage
           document.querySelector(".wrapper").innerHTML = "";
           for (let i = 0; i < resultSortingMedia.length; i++) {
-            const newMedia = new Media(
-              resultSortingMedia[i].title,
-              resultSortingMedia[i].likes,
-              resultSortingMedia[i].image,
-              resultSortingMedia[i].video,
-              resultSortingMedia[i].date,
-              photographerId
-            );
-
-            newMedia.display();
+            resultSortingMedia[i].display();
           }
+          Lightbox.init();
         });
     });
 };
