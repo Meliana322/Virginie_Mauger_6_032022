@@ -8,7 +8,6 @@ export class Media {
     this.photographerId = photographerId;
     this.array = array;
     this.inc = this.inc.bind(this);
-    // this.reduce = this.reduce.bind(this);
     this.reduce();
   }
 
@@ -28,7 +27,6 @@ export class Media {
     //const heart = document.querySelector(".icone-like");
     const profilLikesHeart = document.querySelector("#profil-likes_heart");
     let totalLikes = this.reduce();
-    console.log(totalLikes);
 
     if (this.heart.classList.contains("active")) {
       this.heart.classList.remove("active");

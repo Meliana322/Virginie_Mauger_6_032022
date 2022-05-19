@@ -10,8 +10,9 @@ import {
 
 export class Lightbox {
   static init() {
-    const links = Array.from(document.querySelectorAll('img[src$=".jpg"]'));
-
+    const links = Array.from(
+      document.querySelectorAll('img[src$=".jpg"], video source[src$=".mp4"]')
+    );
     const galleryLightbox = links.map((link) => link.getAttribute("src"));
     links.forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -26,12 +27,18 @@ export class Lightbox {
    * @param {string} url URL de l'image
    * @param {string[]} images Chemin des images de la lightbox
    */
-  constructor(url, images) {
+  constructor(url, images, video, titre) {
     this.element = this.buildDOM(url);
     this.images = images;
+    console.log(this.images);
     this.loadImage(url);
+    this.video = video;
+    this.title = titre;
+    this.loadTitle(url);
+
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
+
     disableBodyScroll(this.element);
     document.addEventListener("keyup", this.onKeyUp);
   }
@@ -42,15 +49,39 @@ export class Lightbox {
   loadImage(url) {
     this.url = null;
     const image = document.createElement("img");
+    const video = document.createElement("video");
     const container = this.element.querySelector(".lightbox__container");
     const loader = document.createElement("div");
     loader.classList.add("lightbox__loader");
     container.innerHTML = "";
     container.appendChild(loader);
     container.removeChild(loader);
-    container.appendChild(image);
+
+    video.setAttribute("controls", "");
+    image.classList.add("cardsImage");
+    video.classList.add("video");
     this.url = url;
-    image.src = url;
+    let extensionsMedias = [];
+    for (let i = 0; i < this.images.length; i++) {
+      extensionsMedias[i] = this.images[i].split(".").pop();
+      if (this.url.split(".").pop() === "jpg") {
+        container.appendChild(image);
+        image.src = url;
+      }
+      if (this.url.split(".").pop() === "mp4") {
+        container.appendChild(video);
+        video.src = url;
+      }
+    }
+  }
+  loadTitle() {
+    this.url = null;
+    const container = this.element.querySelector(".lightbox__container");
+    console.log(container);
+    const title = document.createElement("h2");
+    title.classList.add("cardsTitle");
+
+    container.appendChild(title);
   }
 
   /**
@@ -114,7 +145,6 @@ export class Lightbox {
     <button class="lightbox__next">Suivant</button>
     <button class="lightbox__prev">Précédent</button>
     <div class="lightbox__container">
-      <div class="lightbox__loader">
     </div>`;
     dom
       .querySelector(".lightbox__close")
