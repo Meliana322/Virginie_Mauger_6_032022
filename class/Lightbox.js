@@ -11,14 +11,31 @@ import {
 export class Lightbox {
   static init() {
     const links = Array.from(
-      document.querySelectorAll('img[src$=".jpg"], video source[src$=".mp4"]')
+      document.querySelectorAll(
+        'section.wrapper img[src$=".jpg"], section.wrapper video source[src$=".mp4"]'
+      )
     );
+    const linksTitles = Array.from(
+      document.querySelectorAll(".galleryDescription h2")
+    );
+    let title = []; // Je récupère tous les titres dans un tableau
+    for (let i = 0; i < linksTitles.length; i++) {
+      title.push(linksTitles[i].textContent);
+    }
+    console.log(title);
+
     const galleryLightbox = links.map((link) => link.getAttribute("src"));
-    links.forEach((link) => {
+
+    const gallery = document.querySelectorAll(".gallery");
+    gallery.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
 
-        new Lightbox(e.currentTarget.getAttribute("src"), galleryLightbox);
+        const source = link.querySelector("img[src]").getAttribute("src");
+        const test = link.querySelector("h2");
+        console.log(test);
+
+        new Lightbox(source, galleryLightbox, title);
       });
     });
   }
@@ -27,14 +44,14 @@ export class Lightbox {
    * @param {string} url URL de l'image
    * @param {string[]} images Chemin des images de la lightbox
    */
-  constructor(url, images, video, titre) {
+  constructor(url, images, titre, video) {
     this.element = this.buildDOM(url);
     this.images = images;
-    console.log(this.images);
     this.loadImage(url);
     this.video = video;
     this.title = titre;
-    this.loadTitle(url);
+    this.loadTitle();
+    console.log(this.title);
 
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
@@ -56,7 +73,6 @@ export class Lightbox {
     container.innerHTML = "";
     container.appendChild(loader);
     container.removeChild(loader);
-
     video.setAttribute("controls", "");
     image.classList.add("cardsImage");
     video.classList.add("video");
@@ -75,13 +91,11 @@ export class Lightbox {
     }
   }
   loadTitle() {
-    this.url = null;
     const container = this.element.querySelector(".lightbox__container");
-    console.log(container);
     const title = document.createElement("h2");
     title.classList.add("cardsTitle");
-
     container.appendChild(title);
+    title.innerHTML = this.test;
   }
 
   /**
@@ -138,7 +152,7 @@ export class Lightbox {
    * @param {string} url URL de l'image
    * @return {HTMLElement}
    */
-  buildDOM(url) {
+  buildDOM() {
     const dom = document.createElement("div");
     dom.classList.add("lightbox");
     dom.innerHTML = `<button class="lightbox__close">Fermer</button>
