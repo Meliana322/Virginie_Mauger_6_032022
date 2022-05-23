@@ -28,29 +28,39 @@ export class Lightbox {
 
     const gallery = document.querySelectorAll(".gallery");
     gallery.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
+      // link.addEventListener("click", (e) => {
+      //   e.preventDefault();
 
-        const source = link.querySelector("img[src]").getAttribute("src");
-        const test = link.querySelector("h2");
+      //   const source = link.querySelector("img[src]").getAttribute("src");
+      //   const test = link.querySelector("h2");
+      //   console.log(test);
+      const imagetest = link.querySelector("a");
+      // console.log(imagetest);
+      imagetest.addEventListener("click", (e) => {
+        console.log("e");
+        e.preventDefault();
+        const source = imagetest.querySelector("[src]").getAttribute("src");
+        console.log(source);
+        const test = link.querySelector("h2").textContent;
         console.log(test);
 
-        new Lightbox(source, galleryLightbox, title);
+        new Lightbox(source, galleryLightbox, test, title);
       });
     });
   }
+
   /**
    *
    * @param {string} url URL de l'image
    * @param {string[]} images Chemin des images de la lightbox
    */
-  constructor(url, images, titre, video) {
-    this.element = this.buildDOM(url);
+  constructor(urlImage, images, urlTitre, titres, video) {
+    this.element = this.buildDOM(urlImage);
     this.images = images;
-    this.loadImage(url);
+    this.loadImage(urlImage);
     this.video = video;
-    this.title = titre;
-    this.loadTitle();
+    this.title = titres;
+    this.loadTitle(urlTitre);
     console.log(this.title);
 
     this.onKeyUp = this.onKeyUp.bind(this);
@@ -75,6 +85,7 @@ export class Lightbox {
     container.removeChild(loader);
     video.setAttribute("controls", "");
     image.classList.add("cardsImage");
+    image.setAttribute("alt", "");
     video.classList.add("video");
     this.url = url;
     let extensionsMedias = [];
@@ -90,12 +101,14 @@ export class Lightbox {
       }
     }
   }
-  loadTitle() {
+  loadTitle(url) {
+    this.urltest = null;
+    this.urltest = url;
     const container = this.element.querySelector(".lightbox__container");
     const title = document.createElement("h2");
     title.classList.add("cardsTitle");
     container.appendChild(title);
-    title.innerHTML = this.test;
+    title.innerHTML = this.urltest;
   }
 
   /**
@@ -134,6 +147,12 @@ export class Lightbox {
       i = -1;
     }
     this.loadImage(this.images[i + 1]);
+
+    let t = this.title.findIndex((element) => element === this.urltest);
+    if (t === this.title.length - 1) {
+      i = -1;
+    }
+    this.loadTitle(this.title[i + 1]);
   }
 
   /**
@@ -146,6 +165,12 @@ export class Lightbox {
       i = this.images.length;
     }
     this.loadImage(this.images[i - 1]);
+
+    let t = this.title.findIndex((element) => element === this.urltest);
+    if (t === 0) {
+      i = this.title.length;
+    }
+    this.loadTitle(this.title[i - 1]);
   }
 
   /**
