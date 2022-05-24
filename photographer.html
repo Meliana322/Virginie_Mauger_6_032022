@@ -34,7 +34,7 @@
     <section class=" filter-profil">
       <div class="filter_selection">
         <label id="filter-id" for="filter-id">Trier par</label>
-        <select name="filters" id="filters-select">
+        <select name="filters" id="filters-select" aria-label="Trier par">
           <option value="popularite">Popularité</option>
           <option value="date">Date</option>
           <option value="titre">Titre</option>
@@ -59,9 +59,11 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" alt="" class="close-contact" />
+        <button id="form__close">
+          <img src="assets/icons/close.svg" alt="" class="close-contact" />
+        </button>
       </header>
-      <form name="contact" aria-labelledby="form-contactez-moi" tabindex="-1">
+      <form name="contact" aria-labelledby="contactez-moi" tabindex="-1">
         <h1 class="name-form"></h1>
         <div class="formData">
           <label for="first">Prénom</label>
@@ -83,7 +85,7 @@
         </div>
         <div>
           <label for="message">Message</label>
-          <textarea id="message" name="message" aria-label="message" aria-labelledby="label-message" cols
+          <textarea id="message" name="message" aria-label="message" aria-labelledby="label-message"
             rows="10"></textarea>
           <br>
         </div>
@@ -92,7 +94,7 @@
     </div>
   </aside>
   <script type="module" src="/scripts/pages/photographerFiche.js"></script>
-  <!-- <script type="module" src="/scripts/utils/lightbox.js"></script> -->
+
 
 
 </body>

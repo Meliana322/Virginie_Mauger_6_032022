@@ -1,21 +1,22 @@
 // !Création des éléments du DOM avec classes, id, attributs
 import { Media } from "../../class/Media.js";
 import { Lightbox } from "../../class/Lightbox.js";
+import { launchModal, closeModal } from "../utils/contactForm.js";
 
 function displayPhotographer(name, portrait, city, country, tagline) {
   const sectionPhotographHeader = document.getElementById("photographHeader");
   sectionPhotographHeader.innerHTML =
     sectionPhotographHeader.innerHTML +
     `<article class="photographProfil">
-      <h1 class="photographName">${name}</h1>
+      <h1 class="photographName">${name}</h1> 
       <span class="photographLocation">${city}, ${country}</span>
       <p class="photographTagline">${tagline}</p>
     </article>
     <div class="divContactButton">
-        <button class="contactButton">Contactez-moi</button>
+        <button title= "contactez-moi" class="contactButton">Contactez-moi</button>
     </div>
     <figure id="photographPortrait" class="photographPortrait">
-      <img class="photographPhotoProfil" src="assets/photographers/${portrait}"></img>
+      <img class="photographPhotoProfil" src="assets/photographers/${portrait}" alt="${name}"></img>
     </figure>`;
 }
 // !Transformation et Récupération des données JSON en objet
@@ -54,17 +55,17 @@ const getPhotographInfo = () => {
       modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
       // launch modal form
-      function launchModal() {
-        modalbg.style.display = "block";
-      }
+      // function launchModal() {
+      //   modalbg.style.display = "block";
+      // }
 
       // CLOSE MODAL
 
-      const closeBtn = document.querySelector("img.close-contact");
+      const closeBtn = document.querySelector("#form__close");
 
-      function closeModal() {
-        modalbg.style.display = "none";
-      }
+      // function closeModal() {
+      //   modalbg.style.display = "none";
+      // }
 
       closeBtn.addEventListener("click", closeModal);
 
@@ -205,3 +206,14 @@ function displayPrice(price) {
       </div>
     </article>`;
 }
+
+document.addEventListener("keydown", (e) => {
+  const submitBtn = document.querySelector(".contact_button");
+  const closeBtn = document.querySelector("#form__close");
+  if (e.key === "Tab") {
+    if (document.activeElement === submitBtn) {
+      e.preventDefault();
+      closeBtn.focus();
+    }
+  }
+});

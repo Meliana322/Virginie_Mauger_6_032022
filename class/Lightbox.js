@@ -22,27 +22,20 @@ export class Lightbox {
     for (let i = 0; i < linksTitles.length; i++) {
       title.push(linksTitles[i].textContent);
     }
-    console.log(title);
 
     const galleryLightbox = links.map((link) => link.getAttribute("src"));
 
     const gallery = document.querySelectorAll(".gallery");
     gallery.forEach((link) => {
-      // link.addEventListener("click", (e) => {
-      //   e.preventDefault();
-
-      //   const source = link.querySelector("img[src]").getAttribute("src");
-      //   const test = link.querySelector("h2");
-      //   console.log(test);
       const imagetest = link.querySelector("a");
       // console.log(imagetest);
       imagetest.addEventListener("click", (e) => {
-        console.log("e");
+        // console.log("e");
         e.preventDefault();
         const source = imagetest.querySelector("[src]").getAttribute("src");
-        console.log(source);
+        // console.log(source);
         const test = link.querySelector("h2").textContent;
-        console.log(test);
+        // console.log(test);
 
         new Lightbox(source, galleryLightbox, test, title);
       });
@@ -61,7 +54,7 @@ export class Lightbox {
     this.video = video;
     this.title = titres;
     this.loadTitle(urlTitre);
-    console.log(this.title);
+    // console.log(this.title);
 
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
@@ -185,6 +178,9 @@ export class Lightbox {
     <button class="lightbox__prev">Précédent</button>
     <div class="lightbox__container">
     </div>`;
+    const closeLightbox = this.element.firstChild;
+    console.log(closeLightbox);
+    closeLightbox.focus();
     dom
       .querySelector(".lightbox__close")
       .addEventListener("click", this.close.bind(this));

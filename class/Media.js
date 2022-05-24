@@ -50,46 +50,42 @@ export class Media {
 
     if (this.image !== undefined) {
       // Si image existe affiche là
-
       div.innerHTML = ` 
-      <div class="image">
+      <article class="image" aria-label="image">
         <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-            <img src="assets/${this.photographerId}/${this.image}" alt="">
+            <img src="assets/${this.photographerId}/${this.image}" alt="${this.title} aria-label=${this.title}">
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
-          <button class="cardsButton">
+          <button class="cardsButton" aria-label="likes">
               <span class="cardsLikes">${this.likes}</span>
               <i class="far fa-heart heart icone-like"></i>
           </button>
         </div>
-      </div>`;
+      </article>`;
       galleryDOM.appendChild(div);
-
       const btn = div.querySelector(".cardsButton");
       this.span = div.querySelector(".cardsLikes");
       this.heart = div.querySelector(".icone-like");
       btn.addEventListener("click", this.inc);
     } else {
       div.innerHTML = ` 
-      <div class="image">
-        
+      <article class="image">
         <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-          <video controls width="">
-          <source src="assets/${this.photographerId}/${this.video}"
+          <video controls aria-label=${this.title}>
+          <source type="video/mp4" src="assets/${this.photographerId}/${this.video}" 
+          <track src="video/mp4" kind="captions" srclang="fr" label="not_captions">
           </video>
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
-          <button class="cardsButton">
+          <button class="cardsButton" aria-label="likes>
               <span class="cardsLikes">${this.likes}</span>
               <i class="far fa-heart heart icone-like"></i>
           </button>
         </div>
       </div>`;
       galleryDOM.appendChild(div);
-
-      // const btn = div.querySelector(".cardsButton");
       this.span = div.querySelector(".cardsLikes");
       this.heart = div.querySelector(".icone-like");
       this.heart.addEventListener("click", this.inc);

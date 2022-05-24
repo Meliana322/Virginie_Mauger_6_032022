@@ -41,9 +41,9 @@
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 95%;
+
   width: 75vw;
-  height: 60vh;
+
   margin: auto;
   padding: 30px;
   display: flex;
