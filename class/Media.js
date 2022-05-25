@@ -24,7 +24,7 @@ export class Media {
   }
 
   inc() {
-    //const heart = document.querySelector(".icone-like");
+    // const heart = document.querySelector(".icone-like");
     const profilLikesHeart = document.querySelector("#profil-likes_heart");
     let totalLikes = this.reduce();
 
@@ -73,13 +73,13 @@ export class Media {
       <article class="image">
         <a href="#lightbox" class="link-media" aria-label="open lightbox view">
           <video controls aria-label=${this.title}>
-          <source type="video/mp4" src="assets/${this.photographerId}/${this.video}" 
+          <source width="" src="assets/${this.photographerId}/${this.video}" 
           <track src="video/mp4" kind="captions" srclang="fr" label="not_captions">
           </video>
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
-          <button class="cardsButton" aria-label="likes>
+          <button class="cardsButton" aria-label="likes">
               <span class="cardsLikes">${this.likes}</span>
               <i class="far fa-heart heart icone-like"></i>
           </button>

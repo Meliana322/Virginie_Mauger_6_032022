@@ -1,7 +1,7 @@
-import {
-  enableBodyScroll,
-  disableBodyScroll,
-} from "../../scripts/body-scroll-locks.js";
+// import {
+//   enableBodyScroll,
+//   disableBodyScroll,
+// } from "../../scripts/body-scroll-locks.js";
 /**
  * @property {HTMLElement} element
  * @property {string[]} imagesChemin des images de la lightbox
@@ -59,7 +59,7 @@ export class Lightbox {
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
 
-    disableBodyScroll(this.element);
+    // disableBodyScroll(this.element);
     document.addEventListener("keyup", this.onKeyUp);
   }
 
@@ -67,6 +67,9 @@ export class Lightbox {
   //  * @param {string} url URL de l'image
   //  */
   loadImage(url) {
+    const main = document.getElementById("main");
+    main.ariaHidden = true;
+
     this.url = null;
     const image = document.createElement("img");
     const video = document.createElement("video");
@@ -124,7 +127,7 @@ export class Lightbox {
   close(e) {
     e.preventDefault();
     this.element.classList.add("fadeOut");
-    enableBodyScroll(this.element);
+    // enableBodyScroll(this.element);
     window.setTimeout(() => {
       this.element.parentElement.removeChild(this.element);
     }, 500);
@@ -173,14 +176,13 @@ export class Lightbox {
   buildDOM() {
     const dom = document.createElement("div");
     dom.classList.add("lightbox");
+
     dom.innerHTML = `<button class="lightbox__close">Fermer</button>
     <button class="lightbox__next">Suivant</button>
     <button class="lightbox__prev">Précédent</button>
     <div class="lightbox__container">
     </div>`;
-    const closeLightbox = this.element.firstChild;
-    console.log(closeLightbox);
-    closeLightbox.focus();
+
     dom
       .querySelector(".lightbox__close")
       .addEventListener("click", this.close.bind(this));

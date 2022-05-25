@@ -54,18 +54,9 @@ const getPhotographInfo = () => {
       // launch modal event
       modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-      // launch modal form
-      // function launchModal() {
-      //   modalbg.style.display = "block";
-      // }
-
       // CLOSE MODAL
 
       const closeBtn = document.querySelector("#form__close");
-
-      // function closeModal() {
-      //   modalbg.style.display = "none";
-      // }
 
       closeBtn.addEventListener("click", closeModal);
 
