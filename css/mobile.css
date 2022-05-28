@@ -4,17 +4,69 @@
     grid-template-columns: 1fr;
   }
   /* !Pages Photographes */
+  html {
+    height: 100vh;
+  }
   /* header */
   .logo #logo {
     height: 70%;
   }
   /* Section photograph-header */
+  #photographHeader {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
   .photographProfil {
     font-size: 1.4em;
+    display: flex;
+    align-items: center;
+    margin-left: unset;
+    width: 100%;
   }
+  .photographProfil h1 {
+    font-size: 35px;
+    margin-top: 15px;
+  }
+
   .contactButton {
     font-size: 16px !important;
     height: 40px;
+  }
+  /* Aside Formulaire */
+  .modal {
+    max-height: 55vh;
+  }
+  .modal header {
+    margin-bottom: unset;
+  }
+  .modal header img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .modal header h2 {
+    font-size: 30px;
+    margin-top: unset;
+  }
+  form h1 {
+    font-size: 30px;
+  }
+  .contact_button {
+    width: 150px;
+    height: 60px;
+  }
+
+  form label {
+    font-size: 20px;
+  }
+  form input {
+    height: 45px;
+  }
+  form textarea {
+    height: 115px;
+    font-size: 18px;
   }
   /* Section filter-profil */
   .filter-profil {
@@ -25,8 +77,20 @@
     justify-content: center;
   }
   .profil-like-photograph {
-    width: 60%;
+    width: 95%;
     font-size: 16px;
     position: unset;
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Section wrapper */
+  .galleryDescription h2 {
+    font-size: 20px;
+  }
+  button.cardsButton {
+    font-size: 18px;
   }
 }

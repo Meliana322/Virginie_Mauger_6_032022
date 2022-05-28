@@ -44,29 +44,51 @@
     display: flex;
     justify-content: center;
     margin: unset;
-    height: 33%;
+    height: 20%;
+    font-size: 50px;
+    justify-content: flex-start;
   }
   .photographProfil span {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .photographProfil p {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   .contactButton {
-    height: 50px;
+    height: 60px;
   }
-  /* Section filter-profil */
-  .filter_selection {
-    width: 85%;
+
+  /* Aside Formulaire */
+  .modal {
+    max-height: 75vh;
   }
-  .filter_selection #filter-id {
-    width: 30%;
+  .modal header img {
+    width: 32px;
+    height: 32px;
   }
-  .filter_selection #filters-select {
-    width: 40%;
+  .modal header {
+    display: flex;
+    flex-direction: row;
   }
+  .modal header h2 {
+    font-size: 50px;
+    margin-bottom: unset;
+  }
+  form h1 {
+    font-size: 50px;
+    margin: unset;
+  }
+  .contact_button {
+    width: 150px;
+    height: 60px;
+  }
+
+  form label {
+    font-size: 30px;
+  }
+
   /* Section lightbox */
   .lightbox {
     grid-template-columns: 1fr;
