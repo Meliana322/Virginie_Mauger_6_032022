@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
 
-  <title>Fisheye</title>
+  <title>FishEye, site web de photographe freelances</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Fisheye, plateforme de photographes" />
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -33,7 +33,7 @@
 
     <section class=" filter-profil">
       <div class="filter_selection">
-        <label id="filter-id" for="filter-id">Trier par</label>
+        <label id="filter-id" for="filters-select">Trier par</label>
         <select name="filters" id="filters-select" aria-label="Trier par">
           <option value="popularite">Popularité</option>
           <option value="date">Date</option>
@@ -54,42 +54,42 @@
 
   <!-- Mon formulaire -->
 
-  <aside id="formulaire" role="dialog" tabindex="-1">
+  <aside id="formulaire" tabindex="-1">
     <div class="overlay-formulaire"></div>
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
         <button id="form__close">
-          <img src="assets/icons/close.svg" alt="" class="close-contact" />
+          <img src="assets/icons/close-white.svg" alt="" class="close-contact" />
         </button>
       </header>
       <form name="contact" aria-labelledby="contactez-moi" tabindex="-1">
         <h1 class="name-form"></h1>
         <div class="formData">
-          <label for="first">Prénom</label>
+          <label for="first" id="label-first-name">Prénom</label>
           <input class="text-control" type="text" id="first" name="first" aria-label="first name"
             aria-labelledby="label-first-name" />
           <br>
         </div>
         <div class="formData">
-          <label for="last">Nom</label>
+          <label for="last" id="label-last-name">Nom</label>
           <input class="text-control" type="text" id="last" name="last" aria-label="last name"
             aria-labelledby="label-last-name" />
           <br>
         </div>
         <div class="formData">
-          <label for="email">Email</label>
+          <label for="email" id="label-email">Email</label>
           <input class="text-control" type="email" id="email" name="email" aria-label="email"
             aria-labelledby="label-email" />
           <br>
         </div>
         <div>
-          <label for="message">Message</label>
+          <label for="message" id="label-message">Votre message</label>
           <textarea id="message" name="message" aria-label="message" aria-labelledby="label-message"
             rows="10"></textarea>
           <br>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <input class="contact_button" type="submit" value="Envoyer"></input>
       </form>
     </div>
   </aside>

@@ -23,8 +23,7 @@
   border-radius: 5px;
 }
 
-.contactButton,
-.contact_button {
+.contactButton {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -37,13 +36,15 @@
   cursor: pointer;
   display: block;
 }
+#form__close {
+  background-color: #db8876;
+  border: none;
+}
 
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-
   width: 75vw;
-
   margin: auto;
   padding: 30px;
   display: flex;
@@ -97,7 +98,6 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
 }
 
 form input {
@@ -113,6 +113,15 @@ form textarea {
   border: none;
   border-radius: 5px;
   resize: none;
+  font-size: 24px;
+}
+.contact_button {
+  width: 170px;
+  height: 70px;
+  color: #fff;
+  background-color: #911c1c;
+  font-size: 18px;
+  padding: 20px;
 }
 
 .formData[data-error]::after {
@@ -158,15 +167,20 @@ article.photograph-profil {
 }
 .photographProfil {
   width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+  justify-content: center;
 }
 .photographProfil h1 {
   height: 8%;
   color: #d3573c;
+  font-size: 64px;
   font-weight: 400;
 }
 .photographProfil span {
   font-size: 24px;
-  color: #901c1c;
+  color: #911c1c;
 }
 .photographProfil p {
   font-size: 18px;
@@ -208,11 +222,11 @@ article.photograph-profil {
   font-size: 20px;
 }
 .filter_selection #filter-id {
-  width: 20%;
-  font-weight: 600;
+  width: 104px;
+  font-weight: 700;
 }
 .filter_selection #filters-select {
-  width: 27%;
+  width: 170px;
   height: 40px;
   font-weight: 500;
   background-color: #901c1c;
@@ -269,7 +283,7 @@ article.photograph-profil {
   font-size: 24px;
 }
 
-/* encart prix */
+/* Section profil-likes-price */
 .profil-like-photograph {
   width: 22%;
   display: flex;
@@ -289,4 +303,9 @@ article.photograph-profil {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+span#profil-likes_heart,
+.profil-price {
+  font-size: 24px;
+  font-weight: 500;
 }

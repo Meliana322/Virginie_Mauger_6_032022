@@ -1,3 +1,4 @@
+/*Section wrapper */
 .wrapper {
   display: grid;
   grid-template-columns: 30% 30% 30%;
@@ -45,8 +46,9 @@
   color: #901c1c;
 }
 .galleryDescription h2 {
-  font-size: 20px;
+  font-size: 24px;
   margin-top: 20px;
+  font-weight: 400;
 }
 
 button.cardsButton {
@@ -114,7 +116,8 @@ button.cardsButton .far {
 .lightbox__next,
 .lightbox__prev {
   border: none;
-  background: url(/assets/icons/arrow.svg) center center / 40px 48px no-repeat;
+  background: url(/assets/icons/right_arrow.svg) center center / 40px 48px
+    no-repeat;
   color: #911c1c;
   width: 50px;
   height: 90%;
@@ -146,7 +149,7 @@ button.cardsButton .far {
   width: 40px;
   height: 40px;
   z-index: 12;
-  margin-top: 5%;
+  margin-top: 3%;
 }
 
 .lightbox button {
