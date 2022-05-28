@@ -38,6 +38,8 @@ export class Lightbox {
         // console.log(test);
 
         new Lightbox(source, galleryLightbox, test, title);
+        const tabHidden = document.querySelectorAll("header, main");
+        tabHidden.forEach((elt) => (elt.style.display = "none"));
       });
     });
   }
@@ -69,7 +71,6 @@ export class Lightbox {
   loadImage(url) {
     const main = document.getElementById("main");
     main.ariaHidden = true;
-
     this.url = null;
     const image = document.createElement("img");
     const video = document.createElement("video");
@@ -79,6 +80,7 @@ export class Lightbox {
     container.innerHTML = "";
     container.appendChild(loader);
     container.removeChild(loader);
+
     video.setAttribute("controls", "");
     image.classList.add("cardsImage");
     image.setAttribute("alt", "");
@@ -132,6 +134,8 @@ export class Lightbox {
       this.element.parentElement.removeChild(this.element);
     }, 500);
     document.removeEventListener("keyup", this.onKeyUp);
+    const tabHidden = document.querySelectorAll("header, main");
+    tabHidden.forEach((elt) => (elt.style.display = "block"));
   }
   /**
    * @param {MouseEvent/KeyboardEvent} e
