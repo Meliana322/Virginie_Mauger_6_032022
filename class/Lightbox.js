@@ -182,8 +182,8 @@ export class Lightbox {
     dom.classList.add("lightbox");
 
     dom.innerHTML = `<button class="lightbox__close">Fermer</button>
-    <button class="lightbox__next">Suivant</button>
     <button class="lightbox__prev">Précédent</button>
+    <button class="lightbox__next">Suivant</button>
     <div class="lightbox__container">
     </div>`;
 

@@ -57,7 +57,7 @@ export class Media {
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
-          <button class="cardsButton" aria-label="likes">
+          <button class="cardsButton" aria-label="liker photo">
               <span class="cardsLikes">${this.likes}</span>
               <i class="far fa-heart heart icone-like"></i>
           </button>
@@ -79,7 +79,7 @@ export class Media {
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
-          <button class="cardsButton" aria-label="likes">
+          <button class="cardsButton" aria-label="liker video">
               <span class="cardsLikes">${this.likes}</span>
               <i class="far fa-heart heart icone-like"></i>
           </button>

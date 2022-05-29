@@ -35,6 +35,11 @@
     height: 40px;
   }
   /* Aside Formulaire */
+  .filter_selection {
+    padding-right: unset;
+    width: 90%;
+  }
+  /* Aside Formulaire */
   .modal {
     max-height: 55vh;
   }
@@ -73,13 +78,19 @@
     flex-direction: column;
     font-size: 18px;
   }
+  /* Section profil-likes-price */
   .profil-likes-price {
-    justify-content: center;
+    justify-content: flex-end;
+    width: 88%;
+  }
+  .profil-likes {
+    width: 35%;
   }
   .profil-like-photograph {
-    width: 95%;
+    width: 50%;
     font-size: 16px;
     position: unset;
+    margin-right: unset;
   }
   .wrapper {
     display: flex;
@@ -92,5 +103,27 @@
   }
   button.cardsButton {
     font-size: 18px;
+  }
+  /* Section Lightbox */
+  /* .lightbox {
+    height: auto;
+  } */
+  .lightbox__close {
+    width: 16px;
+    height: 16px;
+  }
+  .lightbox__next,
+  .lightbox__prev {
+    background: url(/assets/icons/right_arrow\ copy.svg) center center / 16px
+      24px no-repeat;
+  }
+  .lightbox__prev {
+    left: 1%;
+  }
+  .lightbox__next {
+    right: 1%;
+  }
+  h2.cardsTitle {
+    font-size: 20px;
   }
 }
