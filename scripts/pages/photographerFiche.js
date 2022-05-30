@@ -57,14 +57,13 @@ const getPhotographInfo = () => {
       // CLOSE MODAL
 
       const closeBtn = document.querySelector("#form__close");
-
       closeBtn.addEventListener("click", closeModal);
 
       const formData = document.querySelectorAll(".formData");
       const firstName = document.getElementById("first");
       const lastName = document.getElementById("last");
       const eMail = document.getElementById("email");
-
+      // Vérification des données formulaires
       document
         .getElementById("formulaire")
         .addEventListener("submit", function (e) {
@@ -197,7 +196,7 @@ function displayPrice(price) {
       </div>
     </article>`;
 }
-
+// Commande Boucle dans le formulaire
 document.addEventListener("keydown", (e) => {
   const submitBtn = document.querySelector(".contact_button");
   const closeBtn = document.querySelector("#form__close");
@@ -205,6 +204,17 @@ document.addEventListener("keydown", (e) => {
     if (document.activeElement === submitBtn) {
       e.preventDefault();
       closeBtn.focus();
+    }
+  }
+});
+// Commande Boucle dans la Lightbox
+document.addEventListener("keydown", (e) => {
+  const nextBtn = document.querySelector(".lightbox__next");
+  const ligthboxClose = document.querySelector(".lightbox__close");
+  if (e.key === "Tab") {
+    if (document.activeElement === nextBtn) {
+      e.preventDefault();
+      ligthboxClose.focus();
     }
   }
 });

@@ -1,4 +1,3 @@
-// console.log(modalContainer);
 export function launchModal() {
   const modalBg = document.querySelector("#formulaire");
   modalBg.style.display = "block";

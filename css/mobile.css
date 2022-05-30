@@ -3,14 +3,21 @@
   .photographer_section {
     grid-template-columns: 1fr;
   }
+
   /* !Pages Photographes */
   html {
     height: 100vh;
   }
+
+  #main {
+    margin-top: -20px;
+  }
+
   /* header */
   .logo #logo {
-    height: 70%;
+    height: 40%;
   }
+
   /* Section photograph-header */
   #photographHeader {
     display: flex;
@@ -18,6 +25,7 @@
     height: auto;
     align-items: center;
   }
+
   .photographProfil {
     font-size: 1.4em;
     display: flex;
@@ -25,20 +33,28 @@
     margin-left: unset;
     width: 100%;
   }
+
   .photographProfil h1 {
     font-size: 35px;
-    margin-top: 15px;
+    margin-top: 30px;
+  }
+
+  .photographProfil span {
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 
   .contactButton {
     font-size: 16px !important;
     height: 40px;
   }
+
   /* Aside Formulaire */
   .filter_selection {
     padding-right: unset;
     width: 90%;
   }
+
   /* Aside Formulaire */
   .modal {
     max-height: 55vh;
@@ -52,77 +68,93 @@
   }
 
   .modal header h2 {
-    font-size: 30px;
+    font-size: 6vw;
     margin-top: unset;
   }
+
   form h1 {
-    font-size: 30px;
+    font-size: 6vw;
   }
+
   .contact_button {
-    width: 150px;
-    height: 60px;
+    width: 105px;
+    height: 40px;
+    padding: unset;
   }
 
   form label {
     font-size: 20px;
   }
+
   form input {
-    height: 45px;
+    height: 35px;
   }
   form textarea {
-    height: 115px;
+    height: 78px;
     font-size: 18px;
   }
+
   /* Section filter-profil */
   .filter-profil {
     flex-direction: column;
     font-size: 18px;
   }
+
   /* Section profil-likes-price */
   .profil-likes-price {
     justify-content: flex-end;
     width: 88%;
   }
+
   .profil-likes {
     width: 35%;
   }
+
   .profil-like-photograph {
-    width: 50%;
+    width: 70%;
     font-size: 16px;
     position: unset;
     margin-right: unset;
   }
+
+  span#profil-likes_heart,
+  .profil-price {
+    font-size: 16px;
+  }
+
+  /* Section wrapper */
   .wrapper {
     display: flex;
     flex-wrap: wrap;
   }
 
-  /* Section wrapper */
   .galleryDescription h2 {
     font-size: 20px;
   }
+
   button.cardsButton {
     font-size: 18px;
   }
-  /* Section Lightbox */
-  /* .lightbox {
-    height: auto;
-  } */
+
   .lightbox__close {
     width: 16px;
     height: 16px;
   }
+
   .lightbox__next,
   .lightbox__prev {
     background: url(/assets/icons/right_arrow\ copy.svg) center center / 16px
       24px no-repeat;
   }
+
   .lightbox__prev {
     left: 1%;
   }
+
   .lightbox__next {
     right: 1%;
   }
+
   h2.cardsTitle {
     font-size: 20px;
   }

@@ -5,6 +5,7 @@
     flex-direction: column;
     margin: 20px 0;
   }
+
   header h1 {
     font-size: 26px;
     display: flex;
@@ -16,30 +17,36 @@
   .photographer_section {
     grid-template-columns: 1fr 1fr;
   }
+
   /* !Pages Photographes */
   /* header */
   .logo #logo {
     height: 80%;
   }
+
   /* Section photograph-header */
   .photographHeader {
     flex-direction: column;
     align-items: center;
     height: 380px;
   }
+
   .PhotographProfil {
     width: 100%;
     align-items: center;
     display: flex;
     margin: unset !important;
   }
+
   #photographPortrait {
     justify-content: center;
   }
+
   .photographPhotoProfil {
     width: 120px;
     height: 120px;
   }
+
   .photographProfil h1 {
     display: flex;
     justify-content: center;
@@ -48,38 +55,47 @@
     font-size: 50px;
     justify-content: flex-start;
   }
+
   .photographProfil span {
     display: flex;
     justify-content: flex-start;
   }
+
   .photographProfil p {
     display: flex;
     justify-content: flex-start;
   }
+
   .contactButton {
     height: 60px;
   }
 
   /* Aside Formulaire */
   .modal {
-    max-height: 75vh;
+    max-height: 70vh;
   }
+
   .modal header img {
     width: 32px;
     height: 32px;
   }
+
   .modal header {
     display: flex;
     flex-direction: row;
+    margin: unset;
   }
+
   .modal header h2 {
     font-size: 50px;
     margin-bottom: unset;
   }
+
   form h1 {
     font-size: 50px;
-    margin: unset;
+    margin-bottom: 30px;
   }
+
   .contact_button {
     width: 150px;
     height: 60px;
@@ -87,6 +103,12 @@
 
   form label {
     font-size: 30px;
+  }
+  form input {
+    height: 44px;
+  }
+  form div {
+    margin: 12px 0 10px 0;
   }
 
   /* Section lightbox */
@@ -96,17 +118,32 @@
     justify-content: space-between;
     gap: 40px;
   }
+
   .gallery {
     width: 100%;
   }
+
+  .galleryDescription {
+    margin: unset;
+  }
+
   .lightboxDescription p {
     font-size: 20px;
     margin: 0;
   }
+
+  .lightbox__container h2.cardsTitle {
+    font-size: 20px;
+  }
+
   /* Section profil-like-price */
   .profil-like-photograph {
     width: 40%;
     font-size: 18px;
     height: 50px;
+  }
+
+  .lightbox__close {
+    top: 25px;
   }
 }

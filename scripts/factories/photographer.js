@@ -9,7 +9,6 @@ export function photographerFactory(data) {
     const divDescription = document.createElement("div"); // Création élément parent city + country + tag + price
     divPresentation.setAttribute("href", `photographer.html?id=${id}`); // Lien vers page photographe via son id
     divPresentation.setAttribute("aria-label", name); // Lien vers page photographe via son id
-    console.log(divPresentation);
 
     // Presentation
     const img = document.createElement("img");

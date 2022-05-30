@@ -22,7 +22,6 @@ async function displayData(photographers) {
 async function init() {
   // Récupère les datas des photographes
   const { photographers } = await getPhotographers(); //await renvoi données JSON des photographes
-  console.log(photographers);
   displayData(photographers);
 }
 

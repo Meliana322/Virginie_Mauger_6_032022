@@ -53,7 +53,7 @@ export class Media {
       div.innerHTML = ` 
       <article class="image" aria-label="image">
         <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-            <img src="assets/${this.photographerId}/${this.image}" alt="${this.title} aria-label=${this.title}">
+            <img src="assets/${this.photographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}">
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
@@ -72,7 +72,7 @@ export class Media {
       div.innerHTML = ` 
       <article class="image">
         <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-          <video controls aria-label=${this.title}>
+          <video controls aria-label="${this.title}">
           <source width="" src="assets/${this.photographerId}/${this.video}" 
           <track src="video/mp4" kind="captions" srclang="fr" label="not_captions">
           </video>

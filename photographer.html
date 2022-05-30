@@ -11,10 +11,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/104383f80a.js" crossorigin="anonymous"></script>
-
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-  <!-- <link href="css/gallery.css" rel="stylesheet" type="text/css" /> -->
   <link href="css/tablette.css" rel="stylesheet" type="text/css" />
   <link href="css/mobile.css" rel="stylesheet" type="text/css" />
 
@@ -36,8 +33,11 @@
       <div class="filter_selection">
         <label id="filter-id" for="filters-select">Trier par</label>
         <select name="filters" id="filters-select" aria-label="Trier par">
+          <option disabled value="popularity" aria-hidden="true" style="color: whitesmoke;">
           <option value="popularite">Popularité</option>
+          <option disabled value="date" aria-hidden="true" style="color: whitesmoke;">──────────
           <option value="date">Date</option>
+          <option disabled value="titre" aria-hidden="true" style="color: whitesmoke;">──────────
           <option value="titre">Titre</option>
         </select>
       </div>

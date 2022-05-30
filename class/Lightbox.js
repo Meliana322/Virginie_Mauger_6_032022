@@ -1,7 +1,3 @@
-// import {
-//   enableBodyScroll,
-//   disableBodyScroll,
-// } from "../../scripts/body-scroll-locks.js";
 /**
  * @property {HTMLElement} element
  * @property {string[]} imagesChemin des images de la lightbox
@@ -28,14 +24,10 @@ export class Lightbox {
     const gallery = document.querySelectorAll(".gallery");
     gallery.forEach((link) => {
       const imagetest = link.querySelector("a");
-      // console.log(imagetest);
       imagetest.addEventListener("click", (e) => {
-        // console.log("e");
         e.preventDefault();
         const source = imagetest.querySelector("[src]").getAttribute("src");
-        // console.log(source);
         const test = link.querySelector("h2").textContent;
-        // console.log(test);
 
         new Lightbox(source, galleryLightbox, test, title);
         const tabHidden = document.querySelectorAll("header, main");
@@ -56,12 +48,10 @@ export class Lightbox {
     this.video = video;
     this.title = titres;
     this.loadTitle(urlTitre);
-    // console.log(this.title);
 
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
 
-    // disableBodyScroll(this.element);
     document.addEventListener("keyup", this.onKeyUp);
   }
 
@@ -80,10 +70,10 @@ export class Lightbox {
     container.innerHTML = "";
     container.appendChild(loader);
     container.removeChild(loader);
-
     video.setAttribute("controls", "");
     image.classList.add("cardsImage");
-    image.setAttribute("alt", "");
+    image.setAttribute("alt", this.title);
+    image.setAttribute("aria-label", this.title);
     video.classList.add("video");
     this.url = url;
     let extensionsMedias = [];
@@ -100,13 +90,13 @@ export class Lightbox {
     }
   }
   loadTitle(url) {
-    this.urltest = null;
-    this.urltest = url;
+    this.urlTitle = null;
+    this.urlTitle = url;
     const container = this.element.querySelector(".lightbox__container");
     const title = document.createElement("h2");
     title.classList.add("cardsTitle");
     container.appendChild(title);
-    title.innerHTML = this.urltest;
+    title.innerHTML = this.urlTitle;
   }
 
   /**
@@ -129,7 +119,6 @@ export class Lightbox {
   close(e) {
     e.preventDefault();
     this.element.classList.add("fadeOut");
-    // enableBodyScroll(this.element);
     window.setTimeout(() => {
       this.element.parentElement.removeChild(this.element);
     }, 500);
@@ -148,7 +137,7 @@ export class Lightbox {
     }
     this.loadImage(this.images[i + 1]);
 
-    let t = this.title.findIndex((element) => element === this.urltest);
+    let t = this.title.findIndex((element) => element === this.urlTitle);
     if (t === this.title.length - 1) {
       i = -1;
     }
@@ -166,7 +155,7 @@ export class Lightbox {
     }
     this.loadImage(this.images[i - 1]);
 
-    let t = this.title.findIndex((element) => element === this.urltest);
+    let t = this.title.findIndex((element) => element === this.urlTitle);
     if (t === 0) {
       i = this.title.length;
     }

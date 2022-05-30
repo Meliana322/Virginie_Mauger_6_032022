@@ -1,26 +1,75 @@
-#formulaire {
-  display: none;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-.overlay-formulaire {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
+@import url("normalize.css");
+html {
+  font-family: "DM Sans", sans-serif !important;
 }
 
-#photographHeader {
-  background-color: #fafafa;
-  height: 300px;
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+#main {
+  width: 100%;
+  margin-bottom: unset;
+}
+
+header {
+  height: 90px;
+}
+
+a.logo {
+  height: inherit;
   display: flex;
-  margin: 0 5%;
-  border-radius: 5px;
+  align-items: center;
+}
+
+/* Section photographHeader */
+.logo #logo {
+  margin-left: 5%;
+  height: 50px;
+}
+
+article.photograph-profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5%;
+  font-size: 1.8em;
+}
+
+.photographProfil {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 3%;
+  justify-content: center;
+}
+
+.photographProfil h1 {
+  height: 8%;
+  color: #d3573c;
+  font-size: 64px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.photographProfil span {
+  font-size: 24px;
+  color: #911c1c;
+  margin-bottom: 30px;
+}
+
+.photographProfil p {
+  font-size: 18px;
+  color: #525252;
+}
+
+.divContactButton {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .contactButton {
@@ -36,6 +85,48 @@
   cursor: pointer;
   display: block;
 }
+
+#photographPortrait {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.photographPhotoProfil {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Section Aside Formulaire */
+#formulaire {
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-formulaire {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+
+#photographHeader {
+  background-color: #fafafa;
+  height: 300px;
+  display: flex;
+  margin: 0 5%;
+  border-radius: 5px;
+}
+
 #form__close {
   background-color: #db8876;
   border: none;
@@ -44,9 +135,9 @@
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 75vw;
+  width: 55vw;
   margin: auto;
-  padding: 30px;
+
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -59,8 +150,11 @@
 }
 
 .modal header {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 60px;
 }
 
 .modal header img {
@@ -76,9 +170,10 @@
 form {
   display: flex;
   width: 100%;
-  height: 75vh;
+  height: auto;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 30px;
 }
 
 form h1 {
@@ -86,11 +181,13 @@ form h1 {
   font-weight: 400;
   font-size: 64px;
   margin-top: unset;
+  margin-bottom: 50px;
 }
 
 form label {
   color: #312e2e;
   font-size: 36px;
+  margin-bottom: 20px;
 }
 
 form div {
@@ -98,6 +195,7 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
+  margin: 12px 0 30px 0;
 }
 
 form input {
@@ -107,6 +205,7 @@ form input {
   border-radius: 5px;
   font-size: 40px;
 }
+
 form textarea {
   width: 100%;
   height: 170px;
@@ -114,15 +213,6 @@ form textarea {
   border-radius: 5px;
   resize: none;
   font-size: 24px;
-}
-.contact_button {
-  width: 170px;
-  height: 70px;
-  color: #fff;
-  background-color: #911c1c;
-  font-size: 18px;
-  padding: 20px;
-  font-weight: 700;
 }
 
 .formData[data-error]::after {
@@ -137,83 +227,36 @@ form textarea {
   opacity: 0;
   transition: 0.3s;
 }
+
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
+
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #000000;
 }
 
-/* !Perso CSS pages photographes */
-/* Section photographHeader */
-body {
-  margin-bottom: 30px;
-}
-#main {
-  width: 100%;
-  margin-bottom: unset;
+.contact_button {
+  width: 170px;
+  height: 70px;
+  color: #fff;
+  background-color: #911c1c;
+  font-size: 18px;
+  padding: 20px;
+  font-weight: 700;
 }
 
-.logo {
-  margin-left: 5%;
-}
-.logo #logo {
-  height: 100%;
-}
-article.photograph-profil {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 5%;
-  font-size: 1.8em;
-}
-.photographProfil {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 3%;
-  justify-content: center;
-}
-.photographProfil h1 {
-  height: 8%;
-  color: #d3573c;
-  font-size: 64px;
-  font-weight: 400;
-}
-.photographProfil span {
-  font-size: 24px;
-  color: #911c1c;
-}
-.photographProfil p {
-  font-size: 18px;
-  color: #525252;
-}
-.divContactButton {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-#photographPortrait {
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.photographPhotoProfil {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-}
 /* Section filter-profil */
 .filter-profil {
   width: 100%;
   display: flex;
   height: 100px;
 }
+
 .filter-title {
   height: 100%;
 }
+
 .filter_selection {
   height: 100%;
   width: 100%;
@@ -221,12 +264,18 @@ article.photograph-profil {
   display: flex;
   align-items: center;
   padding-right: 30px;
-  font-size: 20px;
 }
-.filter_selection #filter-id {
+
+label#filter-id {
   width: 104px;
   font-weight: 700;
 }
+
+select#filters-select {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .filter_selection #filters-select {
   width: 170px;
   height: 40px;
@@ -236,54 +285,11 @@ article.photograph-profil {
   padding-left: 5px;
   border-radius: 5px;
 }
+
 #filters-select option:focus-visible {
   background-color: #ffffff2c;
 }
-/* Section gallery */
-/* .gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 3%;
-  align-items: center;
-  justify-items: center;
-  height: 800px;
-  margin: 0 5%;
-}
-.galleryCards {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.linkLightboxImage {
-  height: 300px;
-  width: 100%;
-  border-radius: 5px;
-  object-fit: cover;
-}
 
-.galleryDescription {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-.cardsTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #901c1c;
-  font-size: 24px;
-}
-.cardsButton {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 20%;
-  background: unset;
-  border: unset;
-  color: #901c1c;
-  font-size: 24px;
-} */
 /*Section wrapper */
 .wrapper {
   display: grid;
@@ -291,7 +297,9 @@ article.photograph-profil {
   grid-template-rows: 1fr 1fr;
   gap: 0 60px;
   margin: 0 5%;
+  justify-content: space-between;
 }
+
 .gallery {
   display: flex;
   width: 100%;
@@ -300,12 +308,14 @@ article.photograph-profil {
   flex-direction: column;
   margin: unset;
 }
+
 .gallery .image {
   display: flex;
   flex-direction: column;
-  /* padding: 7px; */
+
   width: 100%;
 }
+
 .gallery .image .link-media {
   display: flex;
   width: 100%;
@@ -314,6 +324,7 @@ article.photograph-profil {
   color: #901c1c;
   border-radius: 5px;
 }
+
 .gallery .image img {
   width: 100%;
   vertical-align: middle;
@@ -321,35 +332,43 @@ article.photograph-profil {
   object-fit: cover;
   object-position: 0 30%;
 }
+
 .gallery .image:hover img {
   transform: scale(1.1);
 }
+
 .galleryDescription {
   display: flex;
-  height: 50px;
+  height: 60px;
   width: 100%;
   align-items: center;
   justify-content: space-between;
   color: #901c1c;
-  margin-top: 5px;
+  margin: 5px 0 15px 0;
 }
+
 .galleryDescription h2 {
   font-size: 24px;
-  margin-top: 20px;
   font-weight: 400;
+  line-height: normal;
+}
+
+span.cardsLikes {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 button.cardsButton {
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: 20px;
   cursor: pointer;
   background-color: unset;
   border: unset;
   width: 30%;
   justify-content: flex-end;
 }
+
 button.cardsButton .cardsLikes {
   height: 100%;
   display: flex;
@@ -365,7 +384,6 @@ button.cardsButton .far {
 }
 
 /* Lightbox */
-
 .lightbox {
   position: fixed;
   display: flex;
@@ -407,9 +425,11 @@ button.cardsButton .far {
   left: 4%;
   transform: rotate(180deg);
 }
+
 .lightbox__next {
   right: 4%;
 }
+
 .lightbox__close {
   border: none;
   background: url(/assets/icons/close.svg) center center / 100% 100% no-repeat;
@@ -425,31 +445,40 @@ button.cardsButton .far {
 .lightbox button {
   cursor: pointer;
   text-indent: -10000px;
+  max-height: 80vh;
 }
+
 .lightbox__container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 90vh;
+  max-height: 80vh;
   margin-top: 6%;
   width: 80vw;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
+
 .lightbox__container img,
 .lightbox__container video {
-  width: 100%;
+  width: 80%;
   height: 100%;
   object-fit: cover;
   animation: lightboxIn 0.5s;
 }
+
 h2.lightbox-title {
   height: 100px;
   width: 100%;
   color: #911c1c;
 }
-h2.cardsTitle {
-  width: 100%;
+
+.lightbox__container h2.cardsTitle {
+  width: 80%;
   color: #901c1c;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 2vh;
 }
 
 .lightbox__loader {
@@ -481,15 +510,18 @@ h2.cardsTitle {
   bottom: 0;
   height: 65px;
 }
+
 .profil-likes {
   width: 45%;
 }
+
 .profil-likes-price {
   width: 90%;
   display: flex;
   justify-content: flex-end;
   margin: 0 10%;
 }
+
 span#profil-likes_heart,
 .profil-price {
   font-size: 24px;
