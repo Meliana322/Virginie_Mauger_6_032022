@@ -98,6 +98,7 @@ article.photograph-profil {
   height: 180px;
   object-fit: cover;
   border-radius: 50%;
+  box-shadow: 3px 3px 5px -1px #00000040;
 }
 
 /* Section Aside Formulaire */
@@ -146,6 +147,7 @@ article.photograph-profil {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 3px 2px 2px -1px #00000040;
 }
 
 .modal header {
@@ -341,6 +343,7 @@ select#filters-select {
   height: 300px;
   color: #901c1c;
   border-radius: 5px;
+  box-shadow: 3px 2px 2px -1px #00000040;
 }
 
 .gallery .image img {
@@ -483,6 +486,7 @@ button.cardsButton .far {
   height: 100%;
   object-fit: cover;
   animation: lightboxIn 0.5s;
+  box-shadow: 3px 2px 2px -1px #00000040;
 }
 
 h2.lightbox-title {

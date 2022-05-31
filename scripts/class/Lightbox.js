@@ -48,8 +48,6 @@ export class Lightbox {
     this.video = video;
     this.title = titres;
     this.loadTitle(urlTitre);
-    console.log(this.title);
-
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
 
