@@ -1,6 +1,6 @@
 // !Création des éléments du DOM avec classes, id, attributs
-import { Media } from "../../class/Media.js";
-import { Lightbox } from "../../class/Lightbox.js";
+import { Media } from "../class/Media.js";
+import { Lightbox } from "../class/Lightbox.js";
 import { launchModal, closeModal } from "../utils/contactForm.js";
 
 function displayPhotographer(name, portrait, city, country, tagline) {
