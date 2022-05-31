@@ -32,14 +32,16 @@
     <section class=" filter-profil">
       <div class="filter_selection">
         <label id="filter-id" for="filters-select">Trier par</label>
-        <select name="filters" id="filters-select" aria-label="Trier par">
-          <option disabled value="popularity" aria-hidden="true" style="color: whitesmoke;">
-          <option value="popularite">Popularité</option>
-          <option disabled value="date" aria-hidden="true" style="color: whitesmoke;">──────────
-          <option value="date">Date</option>
-          <option disabled value="titre" aria-hidden="true" style="color: whitesmoke;">──────────
-          <option value="titre">Titre</option>
-        </select>
+        <div class="filter-container">
+          <select name="filters" id="filters-select" aria-label="Trier par">
+            <option disabled value="popularity" aria-hidden="true" style="color: whitesmoke;">
+            <option value="popularite">Popularité</option>
+            <option disabled value="date" aria-hidden="true" style="color: whitesmoke;">──────────
+            <option value="date">Date</option>
+            <option disabled value="titre" aria-hidden="true" style="color: whitesmoke;">──────────
+            <option value="titre" height="30px">Titre</option>
+          </select></div>
+
       </div>
     </section>
 

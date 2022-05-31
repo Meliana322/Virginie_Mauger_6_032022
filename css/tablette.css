@@ -72,7 +72,7 @@
 
   /* Aside Formulaire */
   .modal {
-    max-height: 70vh;
+    width: 600px;
   }
 
   .modal header img {
@@ -87,18 +87,19 @@
   }
 
   .modal header h2 {
-    font-size: 50px;
+    font-size: 35px;
     margin-bottom: unset;
   }
 
   form h1 {
-    font-size: 50px;
-    margin-bottom: 30px;
+    font-size: 35px;
+    margin-bottom: 20px;
   }
 
   .contact_button {
     width: 150px;
     height: 60px;
+    padding: unset;
   }
 
   form label {
@@ -106,9 +107,17 @@
   }
   form input {
     height: 44px;
+    font-size: 18px;
   }
   form div {
     margin: 12px 0 10px 0;
+  }
+  form textarea {
+    height: 115px;
+    font-size: 18px;
+  }
+  .formData[data-error]::after {
+    font-size: 16px;
   }
 
   /* Section lightbox */

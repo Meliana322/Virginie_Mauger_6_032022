@@ -44,10 +44,11 @@ export class Lightbox {
   constructor(urlImage, images, urlTitre, titres, video) {
     this.element = this.buildDOM(urlImage);
     this.images = images;
-    this.loadImage(urlImage);
+    this.loadImage(urlImage, urlTitre);
     this.video = video;
     this.title = titres;
     this.loadTitle(urlTitre);
+    console.log(this.title);
 
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
@@ -58,11 +59,13 @@ export class Lightbox {
   // /**
   //  * @param {string} url URL de l'image
   //  */
-  loadImage(url) {
+  loadImage(url, title) {
     const main = document.getElementById("main");
     main.ariaHidden = true;
     this.url = null;
     const image = document.createElement("img");
+    image.setAttribute("role", "img");
+    // image.setAttribute("aria-labelledby", this.title);
     const video = document.createElement("video");
     const container = this.element.querySelector(".lightbox__container");
     const loader = document.createElement("div");
@@ -72,8 +75,8 @@ export class Lightbox {
     container.removeChild(loader);
     video.setAttribute("controls", "");
     image.classList.add("cardsImage");
-    image.setAttribute("alt", this.title);
-    image.setAttribute("aria-label", this.title);
+    image.setAttribute("alt", title);
+    image.setAttribute("aria-label", title);
     video.classList.add("video");
     this.url = url;
     let extensionsMedias = [];
@@ -135,7 +138,7 @@ export class Lightbox {
     if (i === this.images.length - 1) {
       i = -1;
     }
-    this.loadImage(this.images[i + 1]);
+    this.loadImage(this.images[i + 1], this.title[i + 1]);
 
     let t = this.title.findIndex((element) => element === this.urlTitle);
     if (t === this.title.length - 1) {
@@ -153,7 +156,7 @@ export class Lightbox {
     if (i === 0) {
       i = this.images.length;
     }
-    this.loadImage(this.images[i - 1]);
+    this.loadImage(this.images[i - 1], this.title[i - 1]);
 
     let t = this.title.findIndex((element) => element === this.urlTitle);
     if (t === 0) {

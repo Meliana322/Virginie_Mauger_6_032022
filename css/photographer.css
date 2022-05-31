@@ -135,9 +135,8 @@ article.photograph-profil {
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 55vw;
+  width: 700px;
   margin: auto;
-
   display: flex;
   position: absolute;
   flex-direction: column;
@@ -195,7 +194,7 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin: 12px 0 30px 0;
+  margin: 10px 0 17px 0;
 }
 
 form input {
@@ -274,20 +273,39 @@ label#filter-id {
 select#filters-select {
   font-size: 18px;
   font-weight: 700;
+  position: relative;
 }
 
 .filter_selection #filters-select {
   width: 170px;
   height: 40px;
   font-weight: 500;
-  background-color: #901c1c;
+  background-color: #901c1c !important;
   color: #fff;
   padding-left: 5px;
   border-radius: 5px;
 }
 
+.filter-container {
+  position: relative;
+}
+
+.on::after {
+  background-color: #901c1c !important;
+  background: url(/assets/icons/down_arrow.svg) center center no-repeat;
+  content: "";
+  display: block;
+  width: 15px;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  padding-left: 5px;
+  border-radius: 5px;
+}
+
 #filters-select option:focus-visible {
-  background-color: #ffffff2c;
+  background-color: #0000002c;
 }
 
 /*Section wrapper */

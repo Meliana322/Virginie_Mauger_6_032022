@@ -79,16 +79,17 @@ export class Media {
         </a>
         <div class="galleryDescription">
           <h2 class="cardsTitle">${this.title}</h2>
-          <button class="cardsButton" aria-label="liker video">
+          <button class="cardsButton" aria-label="liker photo">
               <span class="cardsLikes">${this.likes}</span>
               <i class="far fa-heart heart icone-like"></i>
           </button>
         </div>
-      </div>`;
+      </article>`;
       galleryDOM.appendChild(div);
+      const btn = div.querySelector(".cardsButton");
       this.span = div.querySelector(".cardsLikes");
       this.heart = div.querySelector(".icone-like");
-      this.heart.addEventListener("click", this.inc);
+      btn.addEventListener("click", this.inc);
     }
   }
 }

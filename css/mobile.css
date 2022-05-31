@@ -57,7 +57,7 @@
 
   /* Aside Formulaire */
   .modal {
-    max-height: 55vh;
+    width: 300px;
   }
   .modal header {
     margin-bottom: unset;
@@ -68,18 +68,23 @@
   }
 
   .modal header h2 {
-    font-size: 6vw;
+    font-size: 24px;
+    margin-top: unset;
+  }
+
+  form {
     margin-top: unset;
   }
 
   form h1 {
-    font-size: 6vw;
+    font-size: 24px;
   }
 
   .contact_button {
     width: 105px;
     height: 40px;
     padding: unset;
+    font-size: 14px;
   }
 
   form label {
@@ -92,6 +97,9 @@
   form textarea {
     height: 78px;
     font-size: 18px;
+  }
+  .formData[data-error]::after {
+    font-size: 14px;
   }
 
   /* Section filter-profil */

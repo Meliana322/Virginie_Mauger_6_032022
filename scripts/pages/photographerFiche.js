@@ -48,7 +48,7 @@ const getPhotographInfo = () => {
       nameForm.innerHTML = myPhotographer.name;
       // Ouverture formulaire de contact lors du clic
 
-      const modalbg = document.querySelector("#formulaire");
+      // const modalbg = document.querySelector("#formulaire");
       const modalBtn = document.querySelectorAll(".contactButton");
 
       // launch modal event
@@ -89,10 +89,10 @@ const getPhotographInfo = () => {
           }
           // Email
           if (
-            !eMail.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,64})+$/)
+            !eMail.value.match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,64})+$/)
           ) {
             error = "Merci de saisir une adresse mail valide";
-            formData[2].setAttribute("data-error", error); // Autre manière de faire sans utiliser tableau mais utilisation des noeuds
+            formData[2].setAttribute("data-error", error);
             formData[2].setAttribute("data-error-visible", true);
           } else {
             formData[2].setAttribute("data-error-visible", false);
@@ -100,7 +100,12 @@ const getPhotographInfo = () => {
 
           // Disparition du formulaire, affichage de la modale d'envoi de formulaire
           if (error === "") {
-            modalbg.style.display = "none";
+            // modalbg.style.display = "none";
+            console.log("Prénom :" + firstName.value);
+            console.log("Nom :" + lastName.value);
+            console.log("Email :" + eMail.value);
+            console.log("Message :" + document.querySelector("#message").value);
+            closeModal();
           }
         });
 
@@ -135,7 +140,18 @@ const getPhotographInfo = () => {
 
       Lightbox.init();
 
-      // ! Trie des médias par popularité, titre ou dats
+      // ! Trie des médias par popularité, titre ou dates
+      // Flèche du Tri
+      const filtreArrow = document.querySelector(".filter-container");
+      function Arrow() {
+        if (filtreArrow.classList.contains("on")) {
+          filtreArrow.classList.remove("on");
+        } else {
+          filtreArrow.classList.add("on");
+        }
+      }
+      filtreArrow.addEventListener("click", Arrow);
+
       document
         .querySelector("#filters-select")
         .addEventListener("change", function (e) {
