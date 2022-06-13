@@ -6,11 +6,13 @@
 
 export class Lightbox {
   static init() {
+    // Sélection de tous les emplacement des images et vidéos
     const links = Array.from(
       document.querySelectorAll(
         'section.wrapper img[src$=".jpg"], section.wrapper video source[src$=".mp4"]'
       )
     );
+    // Création d'un nouveau tableau avec tous les titres des médias
     const linksTitles = Array.from(
       document.querySelectorAll(".galleryDescription h2")
     );
@@ -22,13 +24,17 @@ export class Lightbox {
     const galleryLightbox = links.map((link) => link.getAttribute("src"));
 
     const gallery = document.querySelectorAll(".gallery");
+
+    // Pour chaque lien
     gallery.forEach((link) => {
       const imagetest = link.querySelector("a");
+
+      // Au clic lance la fonction qui prend en paramètre l'événement
       imagetest.addEventListener("click", (e) => {
         e.preventDefault();
         const source = imagetest.querySelector("[src]").getAttribute("src");
         const test = link.querySelector("h2").textContent;
-
+        // Initialise une nouvelle Lightbox
         new Lightbox(source, galleryLightbox, test, title);
         const tabHidden = document.querySelectorAll("header, main");
         tabHidden.forEach((elt) => (elt.style.display = "none"));
@@ -63,7 +69,6 @@ export class Lightbox {
     this.url = null;
     const image = document.createElement("img");
     image.setAttribute("role", "img");
-    // image.setAttribute("aria-labelledby", this.title);
     const video = document.createElement("video");
     const container = this.element.querySelector(".lightbox__container");
     const loader = document.createElement("div");
@@ -79,6 +84,8 @@ export class Lightbox {
     this.url = url;
     let extensionsMedias = [];
     for (let i = 0; i < this.images.length; i++) {
+      // Split()  divise une chaîne de caractères en une liste ordonnée de sous-chaînes, place ces sous-chaînes dans un tableau et retourne le tableau
+      // pop() supprime le dernier élément d'un tableau et retourne cet élément
       extensionsMedias[i] = this.images[i].split(".").pop();
       if (this.url.split(".").pop() === "jpg") {
         container.appendChild(image);
@@ -189,3 +196,14 @@ export class Lightbox {
     return dom;
   }
 }
+// Commande Boucle dans la Lightbox
+document.addEventListener("keydown", (e) => {
+  const nextBtn = document.querySelector(".lightbox__next");
+  const ligthboxClose = document.querySelector(".lightbox__close");
+  if (e.key === "Tab") {
+    if (document.activeElement === nextBtn) {
+      e.preventDefault();
+      ligthboxClose.focus();
+    }
+  }
+});

@@ -21,7 +21,7 @@
   /* !Pages Photographes */
   /* header */
   .logo #logo {
-    height: 80%;
+    height: 40px;
   }
 
   /* Section photograph-header */
@@ -52,7 +52,7 @@
     justify-content: center;
     margin: unset;
     height: 20%;
-    font-size: 50px;
+    /* font-size: 35px; */
     justify-content: flex-start;
   }
 
@@ -64,10 +64,17 @@
   .photographProfil p {
     display: flex;
     justify-content: flex-start;
+    line-height: 20px;
   }
-
+  .divContactButton {
+  }
   .contactButton {
     height: 60px;
+    width: 140px;
+    font-size: 16px;
+  }
+  #photographPortrait {
+    width: 22%;
   }
 
   /* Aside Formulaire */

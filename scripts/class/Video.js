@@ -1,9 +1,9 @@
-export class Image {
+export class Video {
   constructor(titre, likes, image, video, date, photographerId, array) {
     this.title = titre;
     this.likes = likes;
     this.image = image;
-    // this.video = video;
+    this.video = video;
     this.date = date;
     this.photographerId = photographerId;
     this.array = array;
@@ -48,11 +48,13 @@ export class Image {
     const div = document.createElement("div");
     div.classList.add("gallery");
 
-    // Si image existe affiche là
     div.innerHTML = ` 
-        <article class="image" aria-label="image">
+        <article class="image">
           <a href="#lightbox" class="link-media" aria-label="open lightbox view">
-              <img src="assets/${this.photographerId}/${this.image}" alt="${this.title}" aria-label="${this.title}">
+            <video controls aria-label="${this.title}">
+            <source width="" src="assets/${this.photographerId}/${this.video}" 
+            <track src="video/mp4" kind="captions" srclang="fr" label="not_captions">
+            </video>
           </a>
           <div class="galleryDescription">
             <h2 class="cardsTitle">${this.title}</h2>

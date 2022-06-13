@@ -1,40 +1,26 @@
-// !Création des éléments du DOM avec classes, id, attributs
-import { Media } from "../class/Media.js";
+import { displayPhotographer } from "../utils/displayPhotographer.js";
 import { Lightbox } from "../class/Lightbox.js";
 import { launchModal, closeModal } from "../utils/contactForm.js";
+import { mediaFactory } from "../factories/mediaFactory.js";
+import { displayPrice } from "../utils/displayPrice.js";
 
-function displayPhotographer(name, portrait, city, country, tagline) {
-  const sectionPhotographHeader = document.getElementById("photographHeader");
-  sectionPhotographHeader.innerHTML =
-    sectionPhotographHeader.innerHTML +
-    `<article class="photographProfil">
-      <h1 class="photographName">${name}</h1> 
-      <span class="photographLocation">${city}, ${country}</span>
-      <p class="photographTagline">${tagline}</p>
-    </article>
-    <div class="divContactButton">
-        <button title= "contactez-moi" class="contactButton">Contactez-moi</button>
-    </div>
-    <figure id="photographPortrait" class="photographPortrait">
-      <img class="photographPhotoProfil" src="assets/photographers/${portrait}" alt="${name}"></img>
-    </figure>`;
-}
 // !Transformation et Récupération des données JSON en objet
 const url = new URL(window.location);
 const searchParams = new URLSearchParams(url.search);
-const photographerId = Number(searchParams.get("id")); // Recupère via la barre d'adresse l'id du photographe en nombre et non en string
+// Recupère via la barre d'adresse l'id du photographe en nombre et non en string
+const photographerId = Number(searchParams.get("id"));
 const getPhotographInfo = () => {
   fetch("data/photographers.json")
     .then((res) => res.json())
     .then((json) => {
-      // je récupere les infos des photographes (TOUS)
+      // Récupere les infos des photographes (TOUS)
       const myPhotographer = json.photographers.find(function (photographer) {
         return photographer.id === photographerId;
       });
 
       displayPrice(myPhotographer.price);
 
-      // code qui affiche les infos du photographe
+      // Code qui affiche les infos du photographe
       displayPhotographer(
         myPhotographer.name,
         myPhotographer.portrait,
@@ -46,23 +32,21 @@ const getPhotographInfo = () => {
       // ! Section Formulaire de contact
       const nameForm = document.querySelector(".name-form");
       nameForm.innerHTML = myPhotographer.name;
-      // Ouverture formulaire de contact lors du clic
-
-      // const modalbg = document.querySelector("#formulaire");
       const modalBtn = document.querySelectorAll(".contactButton");
 
-      // launch modal event
+      // Open MODAL
       modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-      // CLOSE MODAL
-
+      // Close MODAL
       const closeBtn = document.querySelector("#form__close");
       closeBtn.addEventListener("click", closeModal);
 
+      // Ciblage des éléments du formulaire
       const formData = document.querySelectorAll(".formData");
       const firstName = document.getElementById("first");
       const lastName = document.getElementById("last");
       const eMail = document.getElementById("email");
+
       // Vérification des données formulaires
       document
         .getElementById("formulaire")
@@ -74,7 +58,8 @@ const getPhotographInfo = () => {
           if (firstName.value.length < 2) {
             error = "Veuillez entrer 2 caractères ou plus pour ce champ";
             formData[0].setAttribute("data-error", error);
-            formData[0].setAttribute("data-error-visible", true); // si data-error = true affiche moi le msg
+            // si data-error = true affiche le msg d'erreur
+            formData[0].setAttribute("data-error-visible", true);
           } else {
             formData[0].setAttribute("data-error-visible", false);
           }
@@ -117,21 +102,17 @@ const getPhotographInfo = () => {
       let resultSortingMedia = [];
       // Tant que "i" est inférieur à la taille du tableau
       for (let i = 0; i < mediaPhotographer.length; i++) {
-        // Si l'id de la barre d'adresse est identique a l'id du proprio du media
+        // Si l'id de la barre d'adresse est identique à l'id du propriétaire du media
         if (photographerId === mediaPhotographer[i].photographerId) {
-          // alors J'ajoute le media dans le tableau resultSortingMedia
+          // alors ajoute le media dans le tableau resultSortingMedia
           resultSortingMedia.push(mediaPhotographer[i]);
         }
       }
       for (let i = 0; i < resultSortingMedia.length; i++) {
-        const newMedia = new Media(
-          resultSortingMedia[i].title,
-          resultSortingMedia[i].likes,
-          resultSortingMedia[i].image,
-          resultSortingMedia[i].video,
-          resultSortingMedia[i].date,
-          photographerId,
-          resultSortingMedia
+        let newMedia = mediaFactory(
+          resultSortingMedia[i],
+          resultSortingMedia,
+          photographerId
         );
 
         newMedia.display();
@@ -140,7 +121,7 @@ const getPhotographInfo = () => {
 
       Lightbox.init();
 
-      // ! Trie des médias par popularité, titre ou dates
+      // !Trie des médias par popularité, titre ou dates
       // Flèche du Tri
       const filtreArrow = document.querySelector(".filter-container");
       function Arrow() {
@@ -154,6 +135,7 @@ const getPhotographInfo = () => {
 
       document
         .querySelector("#filters-select")
+        // Evénement "change" pour cibler un changement de valeur réalisé par l'utilisateur
         .addEventListener("change", function (e) {
           if (e.target.value === "popularite") {
             resultSortingMedia.sort(function (a, b) {
@@ -195,42 +177,3 @@ const getPhotographInfo = () => {
     });
 };
 getPhotographInfo();
-
-// ! Section profil-likes-price
-
-function displayPrice(price) {
-  const galleryDOM = document.querySelector(".profil-likes-price");
-  galleryDOM.innerHTML =
-    galleryDOM.innerHTML +
-    `<article class="profil-like-photograph">
-      <div class="profil-likes">
-        <span id="profil-likes_heart"></span>
-         <i class="fas fa-heart iconeLike"></i>
-      </div>
-      <div class="profil-price">
-        <span id="profil-price-day">${price}€ / jour</span>
-      </div>
-    </article>`;
-}
-// Commande Boucle dans le formulaire
-document.addEventListener("keydown", (e) => {
-  const submitBtn = document.querySelector(".contact_button");
-  const closeBtn = document.querySelector("#form__close");
-  if (e.key === "Tab") {
-    if (document.activeElement === submitBtn) {
-      e.preventDefault();
-      closeBtn.focus();
-    }
-  }
-});
-// Commande Boucle dans la Lightbox
-document.addEventListener("keydown", (e) => {
-  const nextBtn = document.querySelector(".lightbox__next");
-  const ligthboxClose = document.querySelector(".lightbox__close");
-  if (e.key === "Tab") {
-    if (document.activeElement === nextBtn) {
-      e.preventDefault();
-      ligthboxClose.focus();
-    }
-  }
-});
