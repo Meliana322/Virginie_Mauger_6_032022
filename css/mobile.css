@@ -14,8 +14,17 @@
   }
 
   /* header */
+  header {
+    margin: 20px 0 70px 0;
+  }
+  header h1 {
+    margin-top: 22px;
+  }
   .logo #logo {
-    height: 40%;
+    height: 70%;
+  }
+  a.logo {
+    justify-content: center !important;
   }
 
   /* Section photograph-header */
